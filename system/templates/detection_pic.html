@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome/font-awesome.min.css' %}">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{% static 'plugins/animate.css' %}">
+    <!-- Prettyphoto -->
+    <link rel="stylesheet" href="{% static 'plugins/prettyPhoto.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.theme.css' %}">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{% static 'plugins/flex-slider/flexslider.css' %}">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{% static 'plugins/cd-hero/cd-hero.css' %}">
+    <!-- Style Swicther -->
+    <link id="style-switch" href="{% static 'css/presets/preset5.css' %}" media="screen" rel="stylesheet"
+          type="text/css">
+
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+    <script src="plugins/html5shiv.js"></script>
+    <script src="plugins/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+<div class="body-inner">
+
+
+    <div style="font-size: 22px;font-weight: bold;color:#12163a;text-align: center;margin-top: 10px">
+        图片篡改检测细节
+    </div>
+    <hr>
+
+    <div style="font-size: 20px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px">
+        依据RGB-N网络，框定p(tampered | box) > 0.1的部分
+    </div>
+    <img src="{% static 'images/rumors_sample/tampered.jpg' %}" style="margin-left: 120px">
+
+</div><!-- Body inner end -->
+
+
+<style>
+    .big_btns {
+        width: 220px;
+        height: 50px;
+        margin: 20px auto;
+    }
+
+    .btns input {
+        width: 100px;
+        height: 40px;
+        background-color: #ddd;
+        border: 0;
+    }
+
+    .btns .current {
+        background-color: gold;
+    }
+
+    .cons .active {
+        display: block;
+    }
+
+    .tab1 {
+        width: 500px;
+        height: 300px;
+    }
+
+    .none {
+        display: none;
+    }
+</style>
+
+
+</body>
+
+
+</html>

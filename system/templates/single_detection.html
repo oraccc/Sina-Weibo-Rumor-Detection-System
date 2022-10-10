@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags%}
+
+<head>
+    <meta charset="utf-8">
+    <title>{{page.title}}</title>
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome/font-awesome.min.css' %}">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{% static 'plugins/animate.css' %}">
+    <!-- Prettyphoto -->
+    <link rel="stylesheet" href="{% static 'plugins/prettyPhoto.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.theme.css' %}">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{% static 'plugins/flex-slider/flexslider.css' %}">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{% static 'plugins/cd-hero/cd-hero.css' %}">
+    <!-- Style Swicther -->
+    <link id="style-switch" href="{% static 'css/presets/preset5.css' %}" media="screen" rel="stylesheet"
+        type="text/css">
+    <link rel="stylesheet" href="{% static 'css/xadmin.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <script src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+    <script src="plugins/html5shiv.js"></script>
+    <script src="plugins/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!--Favicon-->
+    <link rel="icon" href="img/favicon/favicon-32x32.png" type="image/x-icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/favicon/favicon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/favicon/favicon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="img/favicon/favicon-54x54.png">
+
+</head>
+
+<body>
+
+    <!-- Style switcher start -->
+    <div class="style-switch-wrapper">
+        <div class="style-switch-button">
+            <i class="fa fa-sliders"></i>
+        </div>
+        <h3>页面风格选择</h3>
+        <button id="preset1" class="btn btn-sm btn-primary"></button>
+        <button id="preset2" class="btn btn-sm btn-primary"></button>
+        <button id="preset3" class="btn btn-sm btn-primary"></button>
+        <button id="preset4" class="btn btn-sm btn-primary"></button>
+        <button id="preset5" class="btn btn-sm btn-primary"></button>
+        <button id="preset6" class="btn btn-sm btn-primary"></button>
+        <br /><br />
+        <a class="btn btn-sm btn-primary close-styler float-right">关闭</a>
+    </div>
+    <!-- Style switcher end -->
+
+    <div class="body-inner">
+
+
+        <div class="container-flex" tabindex="0" hidefocus="true">
+            <div class="box-left">
+                <br>
+                <div class="left-center">
+                    <div id="pic1" style="width: 450px;height:430px;"></div>
+                </div>
+                <hr>
+                <div class="left-bottom" class="select">
+                    <div id="pic2" style="width: 450px;height:475px;"></div>
+                </div>
+            </div>
+            <!-- Portfolio start -->
+
+            <section id="main-container" class="portfolio portfolio-box">
+
+
+                <div class="gap-60"></div>
+                <div class="row text-center">
+                    <div style="font-size: 25px;font-weight: bold;color:#192e80;text-align: center;margin:20px auto ;">
+                        请选择数据库具体微博条目进行单张检测结果展示
+                    </div>
+                    <div class="col-12">
+                        <br>
+                        <div class="isotope-nav" data-isotope-nav="isotope">
+                            <ul>
+                                <li><a href="#" class="active" data-filter="*">全部</a></li>
+                                <li><a herf="#" data-filter=".livelihood">民生</a></li>
+                                <li><a herf="#" data-filter=".politics">政治</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- Isotope filter end -->
+                <div style="overflow-y:auto;height: 700px;width: 1150px; margin-left: 40px;">
+                    <div id="isotope" class="isotope row">
+                        <div class="col-sm-3 isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor0.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 0</h3>
+                                        <a class="link icon-pentagon" id="p0"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor1.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 1</h3>
+                                        <a class="link icon-pentagon" id="p1"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor2.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 2</h3>
+                                        <a class="link icon-pentagon" id="p2"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor3.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 3</h3>
+                                        <a class="link icon-pentagon" id="p3"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 politics isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor4.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 4</h3>
+                                        <a class="link icon-pentagon" id="p4"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+
+                        <div class="col-sm-3 politics isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor5.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 5</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor6.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 6</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor7.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 7</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 politics isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor8.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 8</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor9.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 9</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor10.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 10</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor11.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 11</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 politics isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor12.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 12</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 poltics isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor13.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 13</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 politics isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor14.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 14</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor15.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 15</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor16.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 16</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                        <div class="col-sm-3 livelihood isotope-item">
+                            <div class="grid">
+                                <figure class="m-0 effect-oscar">
+                                    <img src="{% static 'images/rumors_sample/rumor17.jpg' %}" height="200" width="200"
+                                        alt="">
+                                    <figcaption>
+                                        <h3>Weibo Post 17</h3>
+                                        <a class="link icon-pentagon"><i class="fa fa-search"></i></a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div><!-- Isotope item end -->
+                    </div><!-- Content row end -->
+                </div><!-- Container end -->
+                <hr>
+            </section><!-- Portfolio end -->
+        </div>
+
+    </div><!-- Body inner end -->
+
+    <!-- jQuery -->
+    <script src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- Style Switcher -->
+    <script type="text/javascript" src="{% static 'plugins/style-switcher.js' %}"></script>
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="{% static 'plugins/owl/owl.carousel.js' %}"></script>
+    <!-- PrettyPhoto -->
+    <script type="text/javascript" src="{% static 'plugins/jquery.prettyPhoto.js' %}"></script>
+    <!-- Bxslider -->
+    <script type="text/javascript" src="{% static 'plugins/flex-slider/jquery.flexslider.js' %}"></script>
+    <!-- CD Hero slider -->
+    <script type="text/javascript" src="{% static 'plugins/cd-hero/cd-hero.js' %}"></script>
+    <!-- Isotope -->
+    <script type="text/javascript" src="{% static 'plugins/isotope.js' %}"></script>
+    <script type="text/javascript" src="{% static 'plugins/ini.isotope.js' %}"></script>
+    <!-- Wow Animation -->
+    <script type="text/javascript" src="{% static 'plugins/wow.min.js' %}"></script>
+    <!-- Eeasing -->
+    <script type="text/javascript" src="{% static 'plugins/jquery.easing.1.3.js' %}"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="{% static 'plugins/jquery.counterup.min.js' %}"></script>
+    <!-- Waypoints -->
+    <script type="text/javascript" src="{% static 'plugins/waypoints.min.js' %}"></script>
+    <!-- Main Script -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <!--左上-->
+    <script>
+        var chartDom = document.getElementById('pic1');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        var data = [{
+            name: '民生',
+            itemStyle: {
+                color: '#da1d23'
+            },
+            children: [{
+                name: '图片篡改',
+                value: 13,
+                itemStyle: {
+                    color: '#dd4c51'
+                },
+
+            }, {
+                name: '盗图新闻',
+                value: 25,
+                itemStyle: {
+                    color: '#c94a44'
+                }
+            }, {
+                name: '已知谣言',
+                value: 10,
+                itemStyle: {
+                    color: '#dd4c51'
+                }
+            }, {
+                name: '评论谣言',
+                value: 12,
+                itemStyle: {
+                    color: '#f7a128'
+                }
+            }]
+        }, {
+            name: '政治',
+            itemStyle: {
+                color: '#ad213e'
+            },
+            children: [{
+                name: '图片篡改',
+                value: 6,
+                itemStyle: {
+                    color: '#794752'
+                },
+
+            }, {
+                name: '盗图新闻',
+                value: 12,
+                itemStyle: {
+                    color: '#cc3d41'
+                }
+            }, {
+                name: '已知谣言',
+                value: 9,
+                itemStyle: {
+                    color: '#b14d57'
+                }
+            }, {
+                name: '评论谣言',
+                value: 5,
+                itemStyle: {
+                    color: '#c78869'
+                }
+            }]
+        }];
+
+        option = {
+            title: {
+                text: '各类板块下的虚假新闻检测分类图',
+                left: 'center',
+                top: 10,
+                textStyle: {
+                    fontSize: 22,
+                    color: "#192080"
+                },
+
+            },
+            series: {
+                type: 'sunburst',
+
+                data: data,
+
+                radius: [0, '100%'],
+                sort: null,
+
+                emphasis: {
+                    focus: 'ancestor'
+                },
+
+                levels: [{}, {
+                    r0: '15%',
+                    r: '40%',
+                    itemStyle: {
+                        borderWidth: 2
+                    },
+
+
+                    label: {
+                        rotate: 'tangential',
+                        fontSize: 16,
+                        fontWeight: 'bold'
+                    }
+                }, {
+                    r0: '40%',
+                    r: '80%',
+                    label: {
+                        align: 'right',
+                        fontSize: 14,
+                        fontWeight: 'bold'
+                    }
+                }]
+            }
+        };
+
+        option && myChart.setOption(option);
+
+    </script>
+    <!--左下-->
+    <script>
+        var myCharts = echarts.init(document.getElementById('pic2'));
+        option = {
+            title: {
+                text: '检测结果：虚假新闻分布',
+                left: 'center',
+                top: 0,
+                textStyle: {
+                    fontSize: 22,
+                    color: "#192080"
+                },
+
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            color: ['#192680', '#005365'],
+            // legend: {
+            //     x: 'left',
+            //     orient: 'vertical',
+            //     top: 0,
+            //     left: 10,
+            //     type: 'scroll',
+            //     bottom: 10,
+            //     data: ["民生", "政治"],
+            //
+            // },
+            radar: {
+                indicator: [
+                    { text: '已知谣言', max: 300 },
+                    { text: '盗图新闻', max: 300 },
+                    { text: '图片篡改', max: 300 },
+                    { text: '评论', max: 300 },
+                ],
+                splitNumber: 3,
+                axisName: {
+                    formatter: '{value}',
+                    color: '#000000',
+                    fontSize: 16,
+                    fontWeight: 700,
+                },
+                splitArea: {
+                    areaStyle: {
+                        color: ['rgba(204, 221, 211, 0.2)',
+                            'rgba(204, 221, 211, 0.4)', 'rgba(204, 221, 211, 0.6)'],
+                        shadowColor: 'rgba(0, 0, 0, 0.3)',
+                        shadowBlur: 10
+                    }
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    }
+                },
+                splitLine: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.5)'
+                    }
+                }
+            },
+            series: [
+                {
+                    name: '虚假新闻种类统计',
+                    type: 'radar',
+                    symbol: 'none',
+                    lineStyle: {
+                        width: 3,
+                        color: '#192680'
+                    },
+                    emphasis: {
+                        areaStyle: {
+                            color: 'rgba(0,250,0,0.3)'
+                        }
+                    },
+                    data: [
+                        {
+                            value: [175, 200, 250, 190],
+                            name: '民生',
+                            areaStyle: {
+                                color: 'rgba(143, 154, 159, 0.5)'
+                            }
+                        }
+                    ],
+                    animationDuration: 2800,
+                    animationEasing: "cubicInOut",
+                },
+                {
+                    name: '虚假新闻种类统计',
+                    type: 'radar',
+                    symbol: 'none',
+                    lineStyle: {
+                        width: 3,
+                        color: '#005365'
+                    },
+                    emphasis: {
+                        areaStyle: {
+                            color: 'rgba(0,250,0,0.3)'
+                        }
+                    },
+                    data: [
+                        {
+                            value: [180, 210, 125, 130],
+                            name: '政治',
+                            areaStyle: {
+                                color: 'rgba(143, 154, 159, 0.5)',
+                            }
+                        }
+                    ],
+                    animationDuration: 2800,
+                    animationEasing: "cubicInOut",
+                }
+            ]
+
+        };
+        myCharts.setOption(option);
+    </script>
+    <script>
+        $("#p0").click(function () {
+            xadmin.open('Weibo Post 0检测结果', '/detection0', 1000, 800);
+        })
+    </script>
+    <script>
+        $("#p1").click(function () {
+            xadmin.open('Weibo Post 1检测结果', '/detection1', 1000, 800);
+        })
+    </script>
+    <script>
+        $("#p2").click(function () {
+            xadmin.open('Weibo Post 2检测结果', '/detection2', 1000, 800);
+        })
+    </script>
+    <script>
+        $("#p3").click(function () {
+            xadmin.open('Weibo Post 3检测结果', '/detection3', 1000, 800);
+        })
+    </script>
+    <script>
+        $("#p4").click(function () {
+            xadmin.open('Weibo Post 4检测结果', '/detection4', 1000, 800);
+        })
+    </script>
+
+
+</body>
+
+</html>

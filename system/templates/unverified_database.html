@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+
+<div class="container-flex" tabindex="0" hidefocus="true">
+    <div style="width:80%;">
+        <div style="font-size: 24px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+            疑似虚假新闻数据库
+        </div>
+        <hr>
+        <div>
+            <input placeholder="请输入需要查询的内容" name="key" type="text" id="key" onkeydown="onSearch(this)" value=""
+                   style="width:400px;height:40px;margin-left: 470px;"/>
+        </div>
+        <br>
+        <p>
+            <button onclick="sortTable1()" style="margin-left: 490px;">按微博ID排序</button>
+            <button onclick="sortTable2()">按发帖时间排序</button>
+            <button onclick="sortTable3()">按举报原因排序</button>
+        </p>
+        <div style="overflow-y:auto;height: 700px;">
+            <div style="height:1500px">
+                <table width="1325" border="3" id="store" style="margin-left: 0px">
+                    <!-- id与函数的getId一致 -->
+                    <th style="width:150px">用户id</th>
+                    <th style="width:400px">微博正文</th>
+                    <th style="width:350px">微博配图链接</th>
+                    <th style="width:100px">发帖时间</th>
+                    <th style="width:75px">转发数</th>
+                    <th style="width:75px">评论数</th>
+                    <th style="width:75px">点赞数</th>
+                    <th style="width:150px">举报原因</th>
+                    <th style="width:100px">操作</th>
+                    {% for weibo in unverified %}
+                    <tr>
+                        <td bgcolor="#bdc1c7">{{ weibo.username }}</td>
+                        <td style="width:400px;">{{ weibo.content }}</td>
+                        <td id='my_url{{weibo.id}}' style="width:350px;">{{weibo.img_url}}</td>
+                        <script>
+                            for ( var i = 1; i <= 100; i++) {
+                                var div = document.getElementById("my_url" + i)
+                                if (div ==null)
+                                    continue;
+                                var image_url = div.innerHTML
+                                var sub1, sub2;
+                                sub1 = image_url.substring(0, 28);
+                                sub2 = image_url.substring(28);
+                                var my_url = sub1 + ' ' + sub2;
+                                div.innerHTML = my_url;
+                            }
+                        </script>
+                        <td style="width:100px">{{ weibo.public_time }}</td>
+                        <td style="width:75px">{{ weibo.zhuanfa }}</td>
+                        <td style="width:75px">{{ weibo.pinglun }}</td>
+                        <td style="width:75px">{{ weibo.dianzan }}</td>
+                        {% if weibo.fake_type == "盗图新闻" %}
+                        <td style="width:100px;" bgcolor="#86e3ce">{{ weibo.fake_type }}</td>
+                        {% else %}
+                        {% if weibo.fake_type == "评论语义" %}
+                        <td style="width:100px;" bgcolor="#fa897b">{{ weibo.fake_type }}</td>
+                        {% else %}
+                        {% if weibo.fake_type == "已知假新闻" %}
+                        <td style="width:100px;" bgcolor="#dde6a5">{{ weibo.fake_type }}</td>
+                        {% else %}
+                        <td style="width:100px;" bgcolor="#ffdd94">{{ weibo.fake_type }}</td>
+                        {%endif%}
+                        {%endif%}
+                        {%endif%}
+                        <td style="width:100px;">
+                            <div class="small_btns">
+                                <form action="http://127.0.0.1:8000/multi_detail/" method="get">
+                                    <input type="text" name="weibo_id" value={{ weibo.id }}
+                                           style="background-color:transparent;border:0;height:0px;weight:0px;color:transparent;size:0px;padding-bottom: 0px">
+                                    <input type="submit" value="修改" style="padding-top: 0px">
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <hr>
+
+
+    </div>
+
+</div>
+
+
+<!-- 表格css -->
+<style>
+    td {
+        font-size:16px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+    th {
+        background: gold;
+        text-align: center;
+        font-weight: 700;
+        font-size: 20px;
+        height: 40px;
+    }
+
+    tr {
+        background: #fff;
+    }
+
+    tr:hover {
+        background: rgb(182, 182, 177);
+    }
+</style>
+
+<style>
+    .btns input {
+        width: 120px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: 700;
+        background-color: gold;
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+
+    .small_btns input {
+        width: 70px;
+        height: 25px;
+        font-size: 10px;
+        font-weight: 700;
+        background-color: gainsboro;
+        border: 2px solid black;
+        border-radius: 3px;
+    }
+</style>
+
+
+<script>
+    $("#edit_btn").click(function () {
+        xadmin.open('修改数据库', '/edit', 500, 500)
+    })
+</script>
+<!-- js查询图与表格的函数 -->
+<script type="text/javascript">
+    function onSearch(obj) {//js函数开始
+        setTimeout(function () {//因为是即时查询，需要用setTimeout进行延迟，让值写入到input内，再读取
+            var storeId = document.getElementById('store');//获取table的id标识
+            var rowsLength = storeId.rows.length;//表格总共有多少行
+            var key = obj.value;//获取输入框的值
+            var searchCol0 = 0;//要搜索的哪一列，这里是第一列，从0开始数起
+            var searchCol1 = 1;
+            var searchCol2 = 2;
+            var searchCol3 = 3;
+            var searchCol4 = 4;
+            var searchCol5 = 5;
+            var searchCol6 = 6;
+            var searchCol7 = 7;
+            var searchCol8 = 8;
+            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                var searchText0 = storeId.rows[i].cells[searchCol0].innerHTML;//取得table行，列的值
+                var searchText1 = storeId.rows[i].cells[searchCol1].innerHTML;//取得table行，列的值
+                var searchText2 = storeId.rows[i].cells[searchCol2].innerHTML;//取得table行，列的值
+                var searchText3 = storeId.rows[i].cells[searchCol3].innerHTML;//取得table行，列的值
+                var searchText4 = storeId.rows[i].cells[searchCol4].innerHTML;//取得table行，列的值
+                var searchText5 = storeId.rows[i].cells[searchCol5].innerHTML;//取得table行，列的值
+                var searchText6 = storeId.rows[i].cells[searchCol6].innerHTML;//取得table行，列的值
+                var searchText7 = storeId.rows[i].cells[searchCol7].innerHTML;//取得table行，列的值
+                var searchText8 = storeId.rows[i].cells[searchCol8].innerHTML;//取得table行，列的值
+                if (searchText0.match(key) || searchText1.match(key) || searchText2.match(key) || searchText3.match(key) || searchText4.match(key) || searchText5.match(key) || searchText6.match(key) || searchText7.match(key) || searchText8.match(key)) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                    storeId.rows[i].style.display = '';//显示行操作，
+                } else {
+                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                }
+            }
+
+
+        }, 100);//200为延时时间
+    }
+</script>
+
+<!-- js表格排序 -->
+<script>
+    function sortTable1() {
+        var table, rows, sw, i, x, y, jh;
+        table = document.getElementById("store");
+        sw = true;
+        //循环是否完成
+        while (sw) {
+            //完成了就不循环了
+            sw = false;
+            //获取行
+            rows = table.getElementsByTagName("TR");
+            //循环获得每个单元格的内容
+            for (i = 1; i < (rows.length - 1); i++) {
+                //默认不交换
+                jh = false;
+
+                x = rows[i].getElementsByTagName("TD")[0].innerHTML.toLowerCase();
+                y = rows[i + 1].getElementsByTagName("TD")[0].innerHTML.toLowerCase();
+                //比较两个单元格的内容
+                if (x > y) {
+                    //如果正确肯定要交换位子
+                    jh = true;
+                    break;
+                }
+            }
+            if (jh) {
+                //互换一下位子
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                sw = true;
+            }
+        }
+    }
+
+    function sortTable2() {
+        var table, rows, sw, i, x, y, jh;
+        table = document.getElementById("store");
+        sw = true;
+        //循环是否完成
+        while (sw) {
+            //完成了就不循环了
+            sw = false;
+            //获取行
+            rows = table.getElementsByTagName("TR");
+            //循环获得每个单元格的内容
+            for (i = 1; i < (rows.length - 1); i++) {
+                //默认不交换
+                jh = false;
+
+                x = rows[i].getElementsByTagName("TD")[3].innerHTML.toLowerCase();
+                y = rows[i + 1].getElementsByTagName("TD")[3].innerHTML.toLowerCase();
+                //比较两个单元格的内容
+                if (x > y) {
+                    //如果正确肯定要交换位子
+                    jh = true;
+                    break;
+                }
+            }
+            if (jh) {
+                //互换一下位子
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                sw = true;
+            }
+        }
+    }
+
+    function sortTable3() {
+        var table, rows, sw, i, x, y, jh;
+        table = document.getElementById("store");
+        sw = true;
+        //循环是否完成
+        while (sw) {
+            //完成了就不循环了
+            sw = false;
+            //获取行
+            rows = table.getElementsByTagName("TR");
+            //循环获得每个单元格的内容
+            for (i = 1; i < (rows.length - 1); i++) {
+                //默认不交换
+                jh = false;
+
+                x = rows[i].getElementsByTagName("TD")[7].innerHTML.toLowerCase();
+                y = rows[i + 1].getElementsByTagName("TD")[7].innerHTML.toLowerCase();
+                //比较两个单元格的内容
+                if (x > y) {
+                    //如果正确肯定要交换位子
+                    jh = true;
+                    break;
+                }
+            }
+            if (jh) {
+                //互换一下位子
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                sw = true;
+            }
+        }
+    }
+</script>
+
+
+</body>
+
+</html>

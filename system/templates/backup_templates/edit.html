@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+    <div style="font-size: 22px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+        修改&删除
+    </div>
+    <hr>
+    <form action="" method="get">
+        <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            请更改举报原因
+        </div>
+        <br>
+        <div style="font-size: 17px;font-weight: bold;color:#074569;margin-left: 200px;">
+            <label><input type="checkbox" value="" /> 已知谣言</label>
+            <br>
+            <label><input type="checkbox" value="" /> 图文不符</label>
+            <br>
+            <label><input type="checkbox" value="" /> 图片篡改</label>
+            <br>
+            <label><input type="checkbox" value="" /> 评论语义</label>
+            <br>
+        </div>
+    </form>
+    <hr>
+    <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+        删除该条虚假新闻数据
+    </div>
+    <div class="delete_btns">
+        <input onclick="delete_item()" type="button" value="DELETE" style="margin-left: 200px;">
+    </div>
+    <hr>
+    <div class="submit_btns">
+        <input onclick="submit()" type="button" value="SUBMIT" style="margin-left: 200px;">
+    </div>
+
+    <style>
+        .submit_btns input {
+            width: 90px;
+            height: 30px;
+            font-size: 16px;
+            color: white;
+            font-weight: 700;
+            background-color: #1ba784;
+            border: 2 solid black;
+            border-radius: 5px;
+        }
+    </style>
+    <style>
+        .delete_btns input {
+            width: 90px;
+            height: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            background-color: #ee3f4d;
+            border: 2 solid black;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function delete_item() {
+                var msg = "您真的确定要删除吗？\n\n请确认！";
+                if (confirm(msg) == true) {
+                    return true;
+                } else {
+                    return false;
+                }
+        }
+    </script>
+    <script>
+        function submit() {
+            confirm("提交成功！")
+        }
+    </script>
+</body>

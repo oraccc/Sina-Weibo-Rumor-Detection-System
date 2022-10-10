@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- mobile responsive meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome/font-awesome.min.css' %}">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{% static 'plugins/animate.css' %}">
+    <!-- Prettyphoto -->
+    <link rel="stylesheet" href="{% static 'plugins/prettyPhoto.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.theme.css' %}">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{% static 'plugins/flex-slider/flexslider.css' %}">
+    <!-- Flexslider -->
+    <link rel="stylesheet" href="{% static 'plugins/cd-hero/cd-hero.css' %}">
+    <!-- Style Swicther -->
+    <link id="style-switch" href="{% static 'css/presets/preset5.css' %}" media="screen" rel="stylesheet"
+          type="text/css">
+
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+    <script src="plugins/html5shiv.js"></script>
+    <script src="plugins/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+<div class="body-inner">
+
+
+    <div style="font-size: 24px;font-weight: bold;color:#192e80;text-align: center;margin-top: 10px">
+        评论语义分析检测细节
+    </div>
+    <hr>
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div style="width:60%">
+            <div style="font-size: 21px;font-weight: bold;color:#192e80;text-align: center;margin-top: 10px">
+                截取微博评论进行TextCNN语义分析二分类
+            </div>
+            <div style="overflow-y:auto;height: 550px;">
+                <div style="height:1200px">
+                    <div id='1' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px;display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34856874:一个加v的微博，尽然发这种假消息，你有智商和底线吗？
+                        </p>
+                    </div>
+                    <div id='2' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34853791:假的吧？在哪里申请的？
+                        </p>
+                    </div>
+                    <div id='3' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34493756:╮(╯_╰)╭造谣自重
+                        </p>
+                    </div>
+                    <div id='4' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34596175:一看就是瞎编的[弱]
+                        </p>
+                    </div>
+                    <div id='5' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34545328:没有确切消息别乱说好嘛
+                        </p>
+                    </div>
+                    <div id='6' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34478028:此内容为不实消息，已处理。
+                        </p>
+                    </div>
+                    <div id='7' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #00cd00">
+                            User#34785694:有这事？
+                        </p>
+                    </div>
+                    <div id='8' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34483102:假得太无耻了~
+                        </p>
+                    </div>
+                    <div id='9' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34759853:这数据明显造假
+                        </p>
+                    </div>
+                    <div id='10' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34452387:谣言总是不期而至，隔三差五。
+                        </p>
+                    </div>
+                    <div id='11' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#32094862:胡编乱造。
+                        </p>
+                    </div>
+                    <div id='12' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#31238459:怎么举报造谣传谣
+                        </p>
+                    </div>
+                    <div id='13' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34539765:假的
+                        </p>
+                    </div>
+                    <div id='14' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34953786:数据明显不实，并夹带广告
+                        </p>
+                    </div>
+                    <div id='15' style="border:2px solid #606566;margin:10px 30px;border-radius: 5px; display: none;">
+                        <p style="font-size: 18px; font-weight: 700;margin:10px;color: #ff2025">
+                            User#34456824:造谣传谣
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width: 40%">
+            <div class="row wow fadeInLeft text-center" style="margin:0px 10px">
+                <div class="facts2" style="margin-left: 60px">
+                    <span class="facts-icon"><i class="fa fa-comments"></i></span>
+                    <div class="facts-num">
+                        <span class="counter">132</span>
+                    </div>
+                    <h3>爬取到的微博评论</h3>
+                </div>
+            </div>
+
+            <div id="pic1" style="width: 350px;height:350px;margin: 20px auto;">
+            </div>
+        </div>
+    </div>
+
+</div><!-- Body inner end -->
+
+
+<style>
+    .big_btns {
+        width: 220px;
+        height: 50px;
+        margin: 20px auto;
+    }
+
+    .btns input {
+        width: 100px;
+        height: 40px;
+        background-color: #ddd;
+        border: 0;
+    }
+
+    .btns .current {
+        background-color: gold;
+    }
+
+    .cons .active {
+        display: block;
+    }
+
+    .tab1 {
+        width: 500px;
+        height: 300px;
+    }
+
+    .none {
+        display: none;
+    }
+</style>
+
+<script>
+
+    function timer(i) {
+        setTimeout(function () {
+            var id = i + '';
+            var div = document.getElementById(id);
+            div.style.display = 'block';
+        }, i * 150)
+    };
+
+    for (var i = 1; i <= 15; i++) {
+        timer(i);
+    }
+
+</script>
+
+<script>
+    var myCharts1 = echarts.init(document.getElementById('pic1'));
+    var option1 = {
+        title: {
+            left: 'center',
+            text: 'Top50评论语义检测结果分布',
+            textStyle: {
+                fontSize: 22,
+                color: "#192080"
+            }
+        },
+        backgroundColor: 'white',
+        toolbox: {
+            show: true,
+            top: 100,
+            restore: {
+                show: true
+            },
+            saveAsImage: {
+                show: true
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {d}%"
+        },
+
+        legend: {
+            orient: 'horizontal',
+            y: 'bottom',
+            top: 330,
+            left: 20,
+            data: ["含虚假新闻提示", "正常评论"],
+            textStyle: {
+                fontSize: 16,
+                fontWeight: "bold",
+            }
+        },
+
+        visualMap: {
+            show: false,
+            min: 500,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series: [
+            {
+                name: '内容分布',
+                type: 'pie',
+                clockwise: 'true',
+                startAngle: '20',
+                radius: '65%',
+                center: ['50%', '50%'],
+                data: [
+                    {
+                        value: 45,
+                        name: '含虚假新闻提示',
+                        itemStyle: {
+                            color: '#ff4450',
+                            shadowBlur: '20',
+                            shadowColor: 'rgba(0,0,0,0.8)',
+                            shadowOffsetY: '10'
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'Bold',
+                        }
+                    },
+                    {
+                        value: 5,
+                        name: '正常评论',
+                        itemStyle: {
+                            color: '#00cd00',
+                            shadowBlur: '20',
+                            shadowColor: 'rgba(0,0,0,0.8)',
+                            shadowOffsetY: '10'
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'Bold',
+                        }
+                    },
+
+                ],
+                animationDuration: 2800,
+                animationEasing: "cubicInOut",
+            }
+        ]
+    };
+    myCharts1.setOption(option1);
+</script>
+
+<script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+<!-- layui -->
+<script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+<!-- xadmin -->
+<script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+<!-- echarts -->
+<script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+<!-- dataTool -->
+<script type="text/javascript" src="{% static 'js/dataTool.min.js' %}"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+<!-- PrettyPhoto -->
+<script type="text/javascript" src="{% static 'plugins/jquery.prettyPhoto.js' %}"></script>
+<!-- Bootstrap JS -->
+<script type="text/javascript" src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+<!-- Owl Carousel -->
+<script type="text/javascript" src="{% static 'plugins/owl/owl.carousel.js' %}"></script>
+<!-- Bxslider -->
+<script type="text/javascript" src="{% static 'plugins/flex-slider/jquery.flexslider.js' %}"></script>
+<!-- Wow Animation -->
+<script type="text/javascript" src="{% static 'plugins/wow.min.js' %}"></script>
+<!-- Eeasing -->
+<script type="text/javascript" src="{% static 'plugins/jquery.easing.1.3.js' %}"></script>
+<!-- Counter -->
+<script type="text/javascript" src="{% static 'plugins/jquery.counterup.min.js' %}"></script>
+<!-- Waypoints -->
+<script type="text/javascript" src="{% static 'plugins/waypoints.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</body>
+
+
+</html>

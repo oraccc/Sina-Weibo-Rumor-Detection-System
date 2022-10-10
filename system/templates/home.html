@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="zh" class="x-admin-sm">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <!-- ** Plugins Needed for the Project ** -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome/font-awesome.min.css' %}">
+    <!-- Animation -->
+    <link rel="stylesheet" href="{% static 'plugins/animate.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/owl/owl.theme.css' %}">
+
+    <link id="style-switch" href="{% static 'css/presets/preset5.css' %}" media="screen" rel="stylesheet">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- dataTool -->
+    <script type="text/javascript" src="{% static 'js/dataTool.min.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+    <!-- PrettyPhoto -->
+    <script type="text/javascript" src="{% static 'plugins/jquery.prettyPhoto.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="{% static 'plugins/bootstrap/bootstrap.min.js' %}"></script>
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="{% static 'plugins/owl/owl.carousel.js' %}"></script>
+    <!-- Bxslider -->
+    <script type="text/javascript" src="{% static 'plugins/flex-slider/jquery.flexslider.js' %}"></script>
+    <!-- Wow Animation -->
+    <script type="text/javascript" src="{% static 'plugins/wow.min.js' %}"></script>
+    <!-- Eeasing -->
+    <script type="text/javascript" src="{% static 'plugins/jquery.easing.1.3.js' %}"></script>
+    <!-- Counter -->
+    <script type="text/javascript" src="{% static 'plugins/jquery.counterup.min.js' %}"></script>
+    <!-- Waypoints -->
+    <script type="text/javascript" src="{% static 'plugins/waypoints.min.js' %}"></script>
+
+    <!-- Main Script -->
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+</head>
+
+<body>
+<div class="body-inner">
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div class="box-left">
+            <!-- 左上角数据库内容展现 -->
+            <div class="left-top">
+                <div class="cons">
+                    <!-- 内容分布 -->
+                    <div class="clearfloat item none active">
+                        <div id="pic1" style="width: 425px;height:350px;margin: 20px auto;">
+                        </div>
+                    </div>
+                    <!-- 时间分布 -->
+                    <div class="clearfloat item none">
+                        <div id="pic2" style="width: 425px;height:350px;margin: 20px auto;"></div>
+                    </div>
+                </div>
+                <div class="btns" style="margin-left: 65px">
+                    <div class="big_btns" style="font-size: 16px;">
+                        <input type="button" name="" value="内容分布" class="current" style="font-weight: bolder;">
+                        <input type="button" name="" value="时间分布" style="font-weight: bolder;">
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <!-- 左下角关键词关联展现 -->
+            <div class="left-bottom">
+                <div id="pic3" style="width: 450px;height:450px;"></div>
+            </div>
+        </div>
+
+        <div class="box-center">
+            <!-- 中间上方 标题 -->
+            <div class="center-top">
+                <h1 style="font-size: 27px; font-weight: bolder;">
+                    微博虚假新闻智能辅助检测系统
+                </h1>
+            </div>
+
+            <hr>
+            <div class="container">
+                <!-- 中间上方 系统数据库情况汇总 -->
+                <div style="font-size: 24px;font-weight: bold;color:#192e80;text-align: center;margin:10px 10px;">
+                    系统数据库情况汇总
+                </div>
+                <div class="row wow fadeInLeft text-center" style="margin:0px 10px">
+                    <div class="facts2">
+                        <span class="facts-icon"><i class="fa fa-tasks"></i></span>
+                        <div class="facts-num">
+                            <span class="counter">2420</span>
+                        </div>
+                        <h3>微博虚假文本</h3>
+                    </div>
+                    <div class="facts2">
+                        <span class="facts-icon"><i class="fa fa-image"></i></span>
+                        <div class="facts-num">
+                            <span class="counter">2037</span>
+                        </div>
+                        <h3>虚假图片</h3>
+                    </div>
+                    <div class="facts2">
+                        <span class="facts-icon"><i class="fa fa-user-circle"></i></span>
+                        <div class="facts-num">
+                            <span class="counter">1555</span>
+                        </div>
+                        <h3>虚假信息传播者</h3>
+                    </div>
+                </div>
+
+                <hr>
+                <!-- 中间上方 流量图 -->
+                <div id="pic4" style="width: 680px;height:240px;margin: 20px auto;"></div>
+                <!-- 中间下方 滚动表格 -->
+                <div style="font-size: 22px;font-weight: bold;color:#192e80;text-align: center;margin:10px 10px;">
+                    近期系统检测虚假新闻汇总
+                </div>
+                <table width="680" border="3">
+                    <th width="153">微博ID</th>
+                    <th width="290">正文</th>
+                    <th width="118">时间</th>
+                    <th wisth="100">举报理由</th>
+                </table>
+                <div class="my_container">
+                    <div class="copy">
+                        <!-- Table -->
+                        <table width="680" border="3">
+                            <!-- id与函数的getId一致 -->
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10100</td>
+                                <td width="250">归纳汇总为以下八条，开车的朋友...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10027</td>
+                                <td width="250">怎么可能就50人遇难！对面就是居...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10114</td>
+                                <td width="250">世界那么大，那里才安全？...</td>
+                                <td width="100">2021-05-02</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10112</td>
+                                <td width="250">温州申银万国证劵一女子跳楼。...</td>
+                                <td width="100">2021-05-04</td>
+                                <td width="100" bgcolor="#86e3c3">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10156</td>
+                                <td width="250">#马航飞机失联#看完这张照片你...</td>
+                                <td width="100">2021-05-05</td>
+                                <td width="100" bgcolor="#ffdd94">图片篡改</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10113</td>
+                                <td width="250">蓄谋已久的复旦投毒。林某本想...</td>
+                                <td width="100">2021-05-03</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10149</td>
+                                <td width="250">#东京申奥成功# 东京奥运预算...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">14573</td>
+                                <td width="250">陕西永寿刘爱玲惨死，震动了整...</td>
+                                <td width="100">2021-05-07</td>
+                                <td width="100" bgcolor="#fa897b">评论分析</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10776</td>
+                                <td width="250">太震憾了！这是拍自四川大凉山...</td>
+                                <td width="100">2021-05-06</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10100</td>
+                                <td width="250">归纳汇总为以下八条，开车的朋友...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10027</td>
+                                <td width="250">怎么可能就50人遇难！对面就是居...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10114</td>
+                                <td width="250">世界那么大，那里才安全？...</td>
+                                <td width="100">2021-05-02</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10112</td>
+                                <td width="250">温州申银万国证劵一女子跳楼。...</td>
+                                <td width="100">2021-05-04</td>
+                                <td width="100" bgcolor="#86e3c3">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10156</td>
+                                <td width="250">#马航飞机失联#看完这张照片你...</td>
+                                <td width="100">2021-05-05</td>
+                                <td width="100" bgcolor="#ffdd94">图片篡改</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10113</td>
+                                <td width="250">蓄谋已久的复旦投毒。林某本想...</td>
+                                <td width="100">2021-05-03</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10149</td>
+                                <td width="250">#东京申奥成功# 东京奥运预算...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">14573</td>
+                                <td width="250">陕西永寿刘爱玲惨死，震动了整...</td>
+                                <td width="100">2021-05-07</td>
+                                <td width="100" bgcolor="#fa897b">评论分析</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10776</td>
+                                <td width="250">太震憾了！这是拍自四川大凉山...</td>
+                                <td width="100">2021-05-06</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10100</td>
+                                <td width="250">归纳汇总为以下八条，开车的朋友...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10027</td>
+                                <td width="250">怎么可能就50人遇难！对面就是居...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10114</td>
+                                <td width="250">世界那么大，那里才安全？...</td>
+                                <td width="100">2021-05-02</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10112</td>
+                                <td width="250">温州申银万国证劵一女子跳楼。...</td>
+                                <td width="100">2021-05-04</td>
+                                <td width="100" bgcolor="#86e3c3">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10156</td>
+                                <td width="250">#马航飞机失联#看完这张照片你...</td>
+                                <td width="100">2021-05-05</td>
+                                <td width="100" bgcolor="#ffdd94">图片篡改</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10113</td>
+                                <td width="250">蓄谋已久的复旦投毒。林某本想...</td>
+                                <td width="100">2021-05-03</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10149</td>
+                                <td width="250">#东京申奥成功# 东京奥运预算...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">14573</td>
+                                <td width="250">陕西永寿刘爱玲惨死，震动了整...</td>
+                                <td width="100">2021-05-07</td>
+                                <td width="100" bgcolor="#fa897b">评论分析</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10776</td>
+                                <td width="250">太震憾了！这是拍自四川大凉山...</td>
+                                <td width="100">2021-05-06</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10100</td>
+                                <td width="250">归纳汇总为以下八条，开车的朋友...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10027</td>
+                                <td width="250">怎么可能就50人遇难！对面就是居...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10114</td>
+                                <td width="250">世界那么大，那里才安全？...</td>
+                                <td width="100">2021-05-02</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10112</td>
+                                <td width="250">温州申银万国证劵一女子跳楼。...</td>
+                                <td width="100">2021-05-04</td>
+                                <td width="100" bgcolor="#86e3c3">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10156</td>
+                                <td width="250">#马航飞机失联#看完这张照片你...</td>
+                                <td width="100">2021-05-05</td>
+                                <td width="100" bgcolor="#ffdd94">图片篡改</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10113</td>
+                                <td width="250">蓄谋已久的复旦投毒。林某本想...</td>
+                                <td width="100">2021-05-03</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10149</td>
+                                <td width="250">#东京申奥成功# 东京奥运预算...</td>
+                                <td width="100">2021-05-01</td>
+                                <td width="100" bgcolor="#86e3ce">已知谣言</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">14573</td>
+                                <td width="250">陕西永寿刘爱玲惨死，震动了整...</td>
+                                <td width="100">2021-05-07</td>
+                                <td width="100" bgcolor="#fa897b">评论分析</td>
+                            </tr>
+                            <tr>
+                                <td width="130" bgcolor="#bdc1c7">10776</td>
+                                <td width="250">太震憾了！这是拍自四川大凉山...</td>
+                                <td width="100">2021-05-06</td>
+                                <td width="100" bgcolor="#d0e6a5">盗图新闻</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div><!-- Container end -->
+        </div>
+
+        <div class="box-right">
+
+            <br>
+            <br>
+            <!-- 右上方 系统时间与天气 -->
+            <div class="weather-box" style="margin-left: 10px;">
+                <div class="data">
+                    <p class="time" id="time">00:00:00</p>
+                    <p id="date"></p>
+                </div>
+                <div class="weather">
+                    <img id="weatherImg" src="{% static 'images/weather.png' %}" alt=""/>
+                    <div id="weather" style="margin-left: 20px">
+                        <p>XX-XX℃</p>
+                        <p>XX市</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <!-- 右上方 系统检测数据 -->
+            <div id="rotate_state">
+                <div style="font-size: 22px;font-weight: bold;color:#192e80;text-align: center;margin:10px 10px;">
+                    系统检测数据
+                </div>
+                <br>
+                <div class="_yx-status">
+                    <a class="click_pop_zxy yz-zx _status-item green">
+                        <div style="font-size: 18px;font-weight: bold;color:#061658;margin-left: -22px;">
+                            正常新闻微博
+                        </div>
+                        <br>
+                        <div class="_b1-line">
+                            <div class="_b-solid"></div>
+                        </div>
+                        <div class="status-num">6512</div>
+                    </a>
+                    <a class="click_pop_lxy yz-lx _status-item red">
+                        <div style="font-size: 18px;font-weight: bold;color:#061658;margin-left: -22px;">
+                            虚假新闻微博
+                        </div>
+                        <br>
+                        <div class="_b1-line">
+                            <div class="_b-solid"></div>
+                        </div>
+                        <div class="status-num">2034</div>
+                    </a>
+                    <a class="click_pop_why yz-whz _status-item gray">
+                        <div style="font-size: 18px;font-weight: bold;color:#061658;margin-left: -10px;">
+                            无关微博
+                        </div>
+                        <br>
+                        <div class="_b1-line">
+                            <div class="_b-solid"></div>
+                        </div>
+                        <div class="status-num">9854</div>
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+            <!-- 右下方 系统日历图 -->
+            <div style="font-size: 22px;font-weight: bold;color:#192e80;text-align: center;margin:10px 10px;">
+                近期系统检测虚假新闻数据情况
+            </div>
+            <br>
+            <div id="container">
+                <div id="list" style="left: -450px;">
+                    <img src="{% static 'images/calendar/2021-07.png' %}" alt="6"/>
+                    <img src="{% static 'images/calendar/2021-02.png' %}" alt="1"/>
+                    <img src="{% static 'images/calendar/2021-03.png' %}" alt="2"/>
+                    <img src="{% static 'images/calendar/2021-04.png' %}" alt="3"/>
+                    <img src="{% static 'images/calendar/2021-05.png' %}" alt="4"/>
+                    <img src="{% static 'images/calendar/2021-06.png' %}" alt="5"/>
+                    <img src="{% static 'images/calendar/2021-07.png' %}" alt="6"/>
+                </div>
+                <div id="buttons">
+                    <span index="1" class="on"></span>
+                    <span index="2"></span>
+                    <span index="3"></span>
+                    <span index="4"></span>
+                    <span index="5"></span>
+                    <span index="6"></span>
+                </div>
+                <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+                <a href="javascript:;" id="next" class="arrow">&gt;</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+<!-- 本页面附加样式css -->
+<style>
+    /** 切换按钮css **/
+    .big_btns {
+        width: 220px;
+        height: 50px;
+        margin: 20px auto;
+    }
+
+    .btns input {
+        width: 80px;
+        height: 35px;
+        background-color: #ddd;
+        border: 0;
+    }
+
+    .btns .current {
+        background-color: gold;
+    }
+
+    .cons .active {
+        display: block;
+    }
+
+    .none {
+        display: none;
+    }
+
+    /** 滑动表格css **/
+    .my_container {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        font-weight: 300;
+        height: 220px;
+    }
+
+    .my_container .copy {
+        width: 100%;
+        background: #FFF;
+        overflow-y: auto;
+    }
+
+    th,
+    td {
+        text-align: center;
+        height: 35px;
+        font-weight: 700;
+    }
+
+    /** 表格css **/
+    th {
+        background: gold;
+    }
+
+    tr {
+        background: #fff;
+    }
+
+    tr:hover {
+        background: rgb(182, 182, 177);
+    }
+
+    /** 日历图切换css **/
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    #container {
+        width: 450px;
+        height: 450px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    #list {
+        width: 4200px;
+        height: 400px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    #list img {
+        width: 450px;
+    }
+
+    #buttons {
+        position: absolute;
+        height: 10px;
+        width: 100px;
+        z-index: 2;
+        bottom: 20px;
+        left: 190px;
+    }
+
+    #buttons span {
+        cursor: pointer;
+        float: left;
+        border: 1px solid #fff;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #333;
+        margin-right: 5px;
+    }
+
+    #buttons .on {
+        background: orangered;
+    }
+
+    .arrow {
+        cursor: pointer;
+        display: none;
+        line-height: 39px;
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 2;
+        top: 180px;
+        background-color: RGBA(0, 0, 0, .3);
+        color: #fff;
+    }
+
+    .arrow:hover {
+        background-color: RGBA(0, 0, 0, .7);
+    }
+
+    #container:hover .arrow {
+        display: block;
+    }
+
+    #prev {
+        left: 20px;
+    }
+
+    #next {
+        right: 20px;
+    }
+</style>
+
+<!-- 本页面附加动画js & Echarts js -->
+
+<!-- 左上方 内容分布 -->
+<script>
+    var myCharts1 = echarts.init(document.getElementById('pic1'));
+    var option1 = {
+        title: {
+            left: 'center',
+            text: '微博新闻数据库内容分布',
+            textStyle: {
+                fontSize: 22,
+                color: "#192080"
+            }
+        },
+        backgroundColor: 'white',
+        toolbox: {
+            show: true,
+            top: 100,
+            restore: {
+                show: true
+            },
+            saveAsImage: {
+                show: true
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {d}%"
+        },
+
+        legend: {
+            orient: 'horizontal',
+            y: 'bottom',
+            top: 330,
+            left: 20,
+            data: ["无需检测", "非虚假", "疑似虚假", "确认虚假"],
+            textStyle: {
+                fontSize: 16,
+                fontWeight: "bold",
+            }
+        },
+
+        visualMap: {
+            show: false,
+            min: 500,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series: [
+            {
+                name: '内容分布',
+                type: 'pie',
+                clockwise: 'true',
+                startAngle: '20',
+                radius: '65%',
+                center: ['50%', '50%'],
+                data: [
+                    {
+                        value: 3000,
+                        name: '无需检测',
+                        itemStyle: {
+                            color: '#013162',
+                            shadowBlur: '20',
+                            shadowColor: 'rgba(0,0,0,0.8)',
+                            shadowOffsetY: '10'
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'Bold',
+                        }
+                    },
+                    {
+                        value: 2100,
+                        name: '非虚假',
+                        itemStyle: {
+                            color: '#005365',
+                            shadowBlur: '20',
+                            shadowColor: 'rgba(0,0,0,0.8)',
+                            shadowOffsetY: '10'
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'Bold',
+                        }
+                    },
+                    {
+                        value: 500,
+                        name: '疑似虚假',
+                        itemStyle: {
+                            color: '#44929F',
+                            shadowBlur: '20',
+                            shadowColor: 'rgba(0,0,0,0.8)',
+                            shadowOffsetY: '10'
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'Bold',
+                        }
+                    },
+                    {
+                        value: 500,
+                        name: '确认虚假',
+                        itemStyle: {
+                            color: '#C1BDB4',
+                            shadowBlur: '20',
+                            shadowColor: 'rgba(0,0,0,0.8)',
+                            shadowOffsetY: '10'
+                        },
+                        label: {
+                            fontSize: 16,
+                            fontWeight: 'Bold',
+                        }
+                    },
+                ],
+                animationDuration: 2800,
+                animationEasing: "cubicInOut",
+            }
+        ]
+    };
+    myCharts1.setOption(option1);
+</script>
+
+<!-- 左上方 时间分布 -->
+<script>
+    var option = {
+        title: {
+            left: 'center',
+            text: '虚假新闻时间分布',
+            textStyle: {
+                fontSize: 22,
+                color: "#192080"
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            formatter: "{a} <br/>{b} : {c}"
+        },
+        legend: {
+            y: 'bottom',
+            data: ['月份', '同比增长'],
+            textStyle: {
+                fontSize: 16,
+                fontWeight: "bold",
+            }
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['March', 'April', 'May', 'June', 'July'],
+                axisLabel: {
+                    interval: 0,
+                    color: '#000000',
+                    fontSize: 14,
+                    fontWeight: 700
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '微博虚假新闻数',
+                min: 200,
+                max: 300,
+                interval: 20,
+                axisLabel: {
+                    formatter: '{value} '
+                }
+            },
+            {
+                type: 'value',
+                name: '百分比',
+                min: 0,
+                max: 12,
+                axisLabel: {
+                    formatter: '{value}% '
+                }
+            }
+        ],
+        series: [
+
+            {
+                name: '月份',
+                type: 'bar',
+                /*设置柱状图颜色*/
+                itemStyle: {
+                    color: function (params) {
+                        // build a color map as your need.
+                        var colorList = [
+                            '#3c4d67', '#4f88cb', '#4cc6b2', '#fb836f', '#dcc963'
+                        ];
+                        return colorList[params.dataIndex]
+                    },
+                },
+                data: [212, 230, 286, 291, 275],
+                animationDuration: 2800,
+                animationEasing: "cubicInOut",
+            },
+            {
+                name: '同比增长',
+                type: 'line',
+                smooth: true,
+                yAxisIndex: 1,
+                itemStyle: {  /*设置折线颜色*/
+                    color: '#522d80',
+                    label: {
+                        show: true,
+                        position: 'top',
+                        formatter: '{c}%',
+                        fontWeight: 'Bold',
+                        fontSize: 16,
+                    }
+                },
+                data: [5.0, 7.2, 11.2, 6.0, 1.0],
+                animationDuration: 2800,
+                animationEasing: "cubicInOut",
+            },
+
+        ]
+    };
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('pic2'));
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+<!-- 中间 流量图 -->
+<script>
+    var chartDom = document.getElementById('pic4');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    var base = +new Date(2021, 1, 1);
+    var oneDay = 24 * 3600 * 1000;
+    var date = [];
+
+    var data = [Math.abs(Math.random()) * 300];
+
+    for (var i = 1; i < 180; i++) {
+        var now = new Date(base += oneDay);
+        date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+        data.push(Math.abs(Math.round((Math.random() - 0.6) * 300 + data[i - 1])));
+    }
+
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            position: function (pt) {
+                return [pt[0], '10%'];
+            }
+        },
+        title: {
+            left: 'center',
+            text: '系统近期微博扫描量',
+            textStyle: {
+                fontSize: 22,
+                color: '#192e80',
+            }
+        },
+        toolbox: {
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: date
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%'],
+            max: 600,
+        },
+        dataZoom: [{
+            type: 'inside',
+            start: 30,
+            end: 70
+        }, {
+            start: 0,
+            end: 10
+        }],
+        series: [
+            {
+                name: '检测数据',
+                type: 'line',
+                symbol: 'none',
+                sampling: 'lttb',
+                itemStyle: {
+                    color: 'rgb(255, 70, 131)'
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(255, 158, 68)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(255, 70, 131)'
+                    }])
+                },
+                data: data
+            }
+        ]
+    };
+
+    option && myChart.setOption(option);
+</script>
+
+<!-- 左下方 关联图 -->
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('pic3'));
+    var categories = [
+        {name: '民生'},
+        {name: '政治'},
+    ]
+    //节点的数据，value代表其支持度，以及它们所属的类目
+    var dataSet = [
+        {
+            name: '疫情',
+            value: 0.822,
+            category: 0,
+        },
+        {
+            name: '价格',
+            value: 0.622,
+            category: 0,
+        },
+        {
+            name: '服务',
+            value: 0.622,
+            category: 0,
+        },
+        {
+            name: '权益',
+            value: 0.722,
+            category: 0,
+        },
+        {
+            name: '股市',
+            value: 1,
+            category: 1,
+        },
+        {
+            name: '金融',
+            value: 0.8,
+            category: 1,
+        },
+        {
+            name: '资本',
+            value: 0.9,
+            category: 1,
+        },
+        {
+            name: '微信',
+            value: 1,
+            category: 0
+        },
+        {
+            name: '数据',
+            value: 0.673,
+            category: 0
+        },
+        {
+            name: '物联网',
+            value: 0.673,
+            category: 1
+        },
+        {
+            name: '文娱',
+            value: 0.75,
+            category: 1
+        },
+        {
+            name: '明星',
+            value: 1,
+            category: 1
+        },
+
+        {
+            name: '娱乐圈',
+            value: 0.65,
+            category: 0
+        },
+        {
+            name: '拜登',
+            value: 0.607,
+            category: 0
+        },
+        {
+            name: '美国',
+            value: 1,
+            category: 0
+        },
+        {
+            name: '新冠',
+            value: 0.507,
+            category: 1
+        },
+        {
+            name: '男篮',
+            value: 0.7,
+            category: 0
+        },
+        {
+            name: '奥运会',
+            value: 1,
+            category: 0
+        },
+
+        {
+            name: '足球',
+            value: 0.8,
+            category: 1
+        },
+    ]
+
+    //关联数据，value为可信度
+    var dataRelate = [
+        {source: '价格', target: '金融', value: 0.7},
+        {source: '金融', target: '股市', value: 0.75},
+        {source: '资本', target: '股市', value: 0.7},
+        {source: '物联网', target: '微信', value: 0.73},
+        {source: '服务', target: '微信', value: 0.73},
+        {source: '权益', target: '微信', value: 0.73},
+        {source: '文娱', target: '微信', value: 0.73},
+        {source: '数据', target: '微信', value: 0.63},
+        {source: '资本', target: '美国', value: 0.63},
+        {source: '资本', target: '数据', value: 0.63},
+        {source: '微信', target: '股市', value: 0.55},
+        {source: '文娱', target: '明星', value: 0.55},
+        {source: '娱乐圈', target: '明星', value: 0.75},
+        {source: '疫情', target: '美国', value: 0.75},
+        {source: '疫情', target: '新冠', value: 0.75},
+        {source: '新冠', target: '美国', value: 0.85},
+        {source: '拜登', target: '美国', value: 0.65},
+        {source: '男篮', target: '奥运会', value: 0.75},
+        {source: '足球', target: '奥运会', value: 0.8},
+        {source: '奥运会', target: '明星', value: 0.75},
+        {source: '美国', target: '奥运会', value: 0.85},
+
+    ];
+
+    myChart.showLoading();
+
+    $.get('./data/main.json', function (json_data) {
+        //生成节点所需的数据对象
+        myChart.hideLoading();
+        var data = dataSet.map(function (node) {
+            return {
+                x: node.x,
+                y: node.y,
+                name: node.name,
+                value: node.value,
+                category: node.category,
+                symbolSize: node.value * 50,//支持度越大，节点越大
+                itemStyle: {
+                    color: node.color,
+                }
+            };
+        });
+
+        //生成连线所需的数据对象
+        var link = dataRelate.map(function (node) {
+            return {
+                source: node.source,
+                target: node.target,
+                value: node.value + '(相关度)',
+                label: {
+                    show: false,
+                    formatter: function (x) {
+                        return node.value;
+                    }
+                },
+                lineStyle: {
+                    width: 20 * (node.value - 0.5),//可信度越高，连线越粗
+                    color: 'source'
+                }
+
+            };
+        });
+
+
+        option = {
+            title: {
+                left: 'center',
+                text: '虚假新闻高频词关联图',
+                textStyle: {
+                    fontSize: 22,
+                    color: "#192080"
+                }
+            },
+            color: ['#3c4d67', '#fb836f', '#66588f', '#4f88cb', '#4cc6b2', '#ffd700',],
+            // legend: {
+            //     x: 'left',
+            //     top: 0,
+            //     left: 10,
+            //     orient: 'vertical',
+            //     data: ['民生', '政治'],
+            //     textStyle: {
+            //         fontSize: 16,
+            //         fontWeight: "bold",
+            //     }
+            // },
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                }
+            ],
+            roam: true,
+            tooltip: {},
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'force',//'circular','force'
+                    emphasis: {
+                        focus: 'adjacency'
+                    },
+                    //draggable: true,//指示节点是否可以拖动
+                    categories: categories,
+                    data: data,
+                    links: link,
+                    label: {
+                        fontSize: 14,
+                        fontWeight: 700,
+                        show: true
+                    },
+                    edgeSymbol: ['none', 'arrow'],
+                    edgeSymbolSize: 12,
+                    edgeLabel: {
+                        fontSize: 10,
+                        fontWeight: 700,
+                        show: false,
+                    },
+
+                    force: {
+                        repulsion: 150,
+                        gravity: 0.1,
+                        edgeLength: 40
+                    },
+
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 0.5,
+                        shadowBlur: 5,
+                    },
+                    lineStyle: {
+                        opacity: 1,
+                        curveness: 0.3
+                    }
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    })
+
+
+</script>
+
+<!-- 切换按钮js -->
+<script>
+    $(function () {
+        var $btn = $('.btns input');
+        var $div = $('.cons div');
+        $btn.click(function () {
+            $(this).addClass('current').siblings().removeClass('current');
+            $('.cons .item').eq($(this).index()).addClass('active').siblings('.item').removeClass('active');
+        })
+    })
+</script>
+
+<!-- 滑动表格js -->
+<script>
+    $(function () {
+        $('.copy').on('scroll', function () {
+            var scrollTop = $(this).scrollTop() + $(this).height();
+            var scrollHeight = $(this)[0].scrollHeight;
+
+            var percent = scrollTop / scrollHeight * 100;
+            // console.log(percent);
+
+            // Get percent of images
+            // var imageHeight = $('.images')[0].scrollHeight;
+            // console.log(imageHeight);
+
+            // var imagePercent = imageHeight * percent / 100;
+
+            // $('.images').scrollTop(imagePercent - $('.copy').height());
+        });
+    });
+
+    $(window).on('load', function () {
+        var i = 0;
+
+        setInterval(function () {
+            $('.copy').animate({
+                scrollTop: i + 'px'
+            }, 1);
+            i = i + 1;
+        }, 50);
+    });
+</script>
+
+<!-- 轮播图js -->
+<script>
+    //在页面加载完后立即执行多个函数方案。
+    function addloadEvent(func) {
+        var oldonload = window.onload;
+        if (typeof window.onload != "function") {
+            window.onload = func;
+        } else {
+            window.onload = function () {
+                if (oldonload) {
+                    oldonload();
+                }
+                func();
+            }
+        }
+    }
+
+    //在页面加载完后立即执行多个函数方案结束。
+    addloadEvent(lbt);
+
+    //轮播图动画切换原理
+    function lbt() {
+        var container = document.getElementById("container");
+        var prev = document.getElementById("prev");
+        var next = document.getElementById("next");
+        var list = document.getElementById("list");
+        var buttons = document.getElementById("buttons").getElementsByTagName("span");
+        var imgs = list.getElementsByTagName("img");
+        var index = 1;
+        var animated = false;
+        var timer;
+        //当前图片轮播的圆点变色显示，原理：index数值是跟随list滑动次数递增的，第一次index=1，所以第一个button的索引值就是0。
+        //for循环是添加on样式之前要清空之前的on。
+        function showButton() {
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].className == "on") {
+                    buttons[i].className = "";
+                    break;
+                }
+            }
+            buttons[index - 1].className = "on";
+        }
+
+        //圆点变色显示 结束。
+        function animate(offset) {
+            animated = true;
+            var newLeft = parseInt(list.style.left) + offset;//当前的偏移量+下一次的偏移量=新的偏移量
+            var time = 300;//位移总时间
+            var interval = 10;//位移间隔时间
+            //动画效果自定义公式： 每次位移的距离=单次偏移距离/位移次数
+            var speed = offset / (time / interval);
+            //递归函数 直到不满足条件（跳到辅助图）
+            //递归就是把600偏移量分为多次完成偏移
+            function go() {
+                //speed<0 并且 当前偏移量>下一次偏移量 就是向左偏移 || 反之向右偏移
+                if ((speed < 0 && parseInt(list.style.left) > newLeft) || (speed > 0 && parseInt(list.style.left) < newLeft)) {
+                    list.style.left = parseInt(list.style.left) + speed + "px";//每次位移的值
+                    setTimeout(go, interval);//10毫秒再次调用go函数
+                } else {
+                    animated = false;
+                    list.style.left = newLeft + "px";//当前的偏移值=新的偏移值
+                    if (newLeft > -450) {
+                        list.style.left = -2700 + "px";
+                    }
+                    if (newLeft < -2700) {
+                        list.style.left = -450 + "px";
+                    }
+                }
+            }
+
+            go();
+        }
+
+        //自动播放5秒执行一次next.onclick
+        function play() {
+            timer = setInterval(function () {
+                next.onclick();
+            }, 5000);
+        }
+
+        function stop() {
+            clearInterval(timer);
+        }
+
+        //执行所有函数
+        next.onclick = function () {
+            if (index == 6) {
+                index = 1;
+            } else {
+                index += 1;
+            }
+            showButton();
+            if (!animated) {
+                animate(-450);
+            }
+        }
+        //执行所有函数
+        prev.onclick = function () {
+            if (index == 1) {
+                index = 6;
+            } else {
+                index -= 1;
+            }
+            showButton();
+            if (!animated) {
+                animate(450);
+            }
+        }
+        //点击圆点按钮 偏移
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                if (this.className == "on") {
+                    return;
+                }
+                //要点击的index属性的值 转换为整数
+                var myIndex = parseInt(this.getAttribute("index"));
+                //偏移量=-600*（要点击的位置-当前所在的位置），当前的位置就是index循环所得
+                var os = -450 * (myIndex - index);
+                //切换完成后，把点击的index位置变成当前的index位置
+                index = myIndex;
+                showButton();
+                if (!animated) {
+                    animate(os);
+                }
+            }
+        }
+        container.onmouseover = stop;
+        container.onmouseout = play;
+        play();
+    }
+</script>
+
+</html>

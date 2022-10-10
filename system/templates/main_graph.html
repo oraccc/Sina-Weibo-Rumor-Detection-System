@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+
+<div class="container-flex" tabindex="0" hidefocus="true">
+    <div class="half_left">
+        <div id="pic" style="width: 1000px;height:920px;"></div>
+    </div>
+    <div class="half_right">
+        <div style="font-size: 24px;font-weight: bold;color:#196b80;text-align: center;margin-top:40px;">
+            「表格与关联图联动查询」
+        </div>
+        <div style="overflow-y:auto;height: 860px;">
+            <div style="height:1500px">
+                <div class="gap-20"></div>
+                <div>
+                    <input placeholder="请输入需要查询的内容" name="key" type="text" id="key" onkeydown="onSearch(this)"
+                           value="" style="width:300px;margin-left: 195px;"/>
+                </div>
+                <br>
+                <p>
+                    <button onclick="sortTable1()" style="margin-left: 245px;">按关键词排序</button>
+                    <button onclick="sortTable2()">按相关性排序</button>
+                </p>
+
+                <!-- Table -->
+                <table width="550" border="3" id="store" style="margin-left: 70px;">
+                    <!-- id与函数的getId一致 -->
+                    <th>关键词</th>
+                    <th>关联词</th>
+                    <th>相关性</th>
+                    <tr>
+                        <td>股市</td>
+                        <td>金融</td>
+                        <td>0.8</td>
+                    </tr>
+                    <tr>
+                        <td>资本</td>
+                        <td>民生</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>股市</td>
+                        <td>中国</td>
+                        <td>0.7</td>
+                    </tr>
+                    <tr>
+                        <td>日本</td>
+                        <td>财经</td>
+                        <td>0.7</td>
+                    </tr>
+                    <tr>
+                        <td>SpaceX</td>
+                        <td>政治</td>
+                        <td>0.63</td>
+                    </tr>
+                    <tr>
+                        <td>美国</td>
+                        <td>金融</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>美国</td>
+                        <td>国际</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>奥林匹克</td>
+                        <td>消遣</td>
+                        <td>0.75</td>
+                    </tr>
+
+                    <tr>
+                        <td>投票</td>
+                        <td>金融</td>
+                        <td>0.55</td>
+                    </tr>
+
+                    <tr>
+                        <td>Covid19</td>
+                        <td>US</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>选举</td>
+                        <td>金融</td>
+                        <td>0.55</td>
+                    </tr>
+                    <tr>
+                        <td>中国</td>
+                        <td>财经</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>欧盟</td>
+                        <td>财经</td>
+                        <td>0.7</td>
+                    </tr>
+                    <tr>
+                        <td>US</td>
+                        <td>财经</td>
+                        <td>0.8</td>
+                    </tr>
+                    <tr>
+                        <td>金融</td>
+                        <td>财经</td>
+                        <td>0.55</td>
+                    </tr>
+                    <tr>
+                        <td>美元</td>
+                        <td>财经</td>
+                        <td>0.7</td>
+                    </tr>
+                    <tr>
+                        <td>日本</td>
+                        <td>政治</td>
+                        <td>0.6</td>
+                    </tr>
+                    <tr>
+                        <td>脸书</td>
+                        <td>政治</td>
+                        <td>0.73</td>
+                    </tr>
+                    <tr>
+                        <td>推特</td>
+                        <td>政治</td>
+                        <td>0.83</td>
+                    </tr>
+                    <tr>
+                        <td>火星</td>
+                        <td>政治</td>
+                        <td>0.73</td>
+                    </tr>
+
+                    <tr>
+                        <td>谷歌</td>
+                        <td>政治</td>
+                        <td>0.67</td>
+                    </tr>
+                    <tr>
+                        <td>谷歌</td>
+                        <td>投票</td>
+                        <td>0.67</td>
+                    </tr>
+                    <tr>
+                        <td>谷歌</td>
+                        <td>Covid19</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>政治</td>
+                        <td>财经</td>
+                        <td>0.55</td>
+                    </tr>
+                    <tr>
+                        <td>博物馆</td>
+                        <td>消遣</td>
+                        <td>0.615</td>
+                    </tr>
+                    <tr>
+                        <td>狂欢</td>
+                        <td>消遣</td>
+                        <td>0.55</td>
+                    </tr>
+                    <tr>
+                        <td>消遣</td>
+                        <td>US</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>选举</td>
+                        <td>金融</td>
+                        <td>0.55</td>
+                    </tr>
+                    <tr>
+                        <td>奥林匹克</td>
+                        <td>日本</td>
+                        <td>0.85</td>
+                    </tr>
+                    <tr>
+                        <td>公园</td>
+                        <td>消遣</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>Covid19</td>
+                        <td>国际</td>
+                        <td>0.85</td>
+                    </tr>
+
+                    <tr>
+                        <td>疫苗</td>
+                        <td>国际</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>国际</td>
+                        <td>民生</td>
+                        <td>0.85</td>
+                    </tr>
+                    <tr>
+                        <td>疫苗</td>
+                        <td>中国</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>药</td>
+                        <td>国际</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>新冠疫苗</td>
+                        <td>国际</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>隔离</td>
+                        <td>国际</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>全明星</td>
+                        <td>民生</td>
+                        <td>0.65</td>
+                    </tr>
+
+                    <tr>
+                        <td>棒球</td>
+                        <td>民生</td>
+                        <td>0.85</td>
+                    </tr>
+                    <tr>
+                        <td>篮球</td>
+                        <td>民生</td>
+                        <td>0.8</td>
+                    </tr>
+                    <tr>
+                        <td>民生</td>
+                        <td>消遣</td>
+                        <td>0.75</td>
+                    </tr>
+                    <tr>
+                        <td>篮球</td>
+                        <td>全明星</td>
+                        <td>0.65</td>
+                    </tr>
+                    <tr>
+                        <td>全明星</td>
+                        <td>US</td>
+                        <td>0.75</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 表格css -->
+<style>
+    th,
+    td {
+        text-align: center;
+        font-weight: 700;
+    }
+
+    th {
+        background: gold;
+    }
+
+    tr {
+        background: #fff;
+    }
+
+    tr:hover {
+        background: rgb(182, 182, 177);
+    }
+</style>
+
+<!-- 关联图 -->
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('pic'));
+    var categories = [
+        {name: '民生'},
+        {name: '政治'},
+    ]
+    //节点的数据，value代表其支持度，以及它们所属的类目
+    var dataSet = [
+        {
+            name: '美国',
+            value: 0.822,
+            category: 0,
+        },
+        {
+            name: '股市',
+            value: 0.622,
+            category: 0,
+        },
+        {
+            name: '新冠疫苗',
+            value: 0.607,
+            category: 0
+        },
+        {
+            name: '狂欢',
+            value: 0.75,
+            category: 0
+        },
+        {
+            name: '拜登',
+            value: 0.622,
+            category: 0,
+        },
+        {
+            name: '投票',
+            value: 0.722,
+            category: 0,
+        },
+        {
+            name: '资本',
+            value: 0.7,
+            category: 1
+        },
+        {
+            name: '选举',
+            value: 0.622,
+            category: 0,
+        },
+        {
+            name: '金融',
+            value: 1.1,
+            category: 0,
+        },
+        {
+            name: '财经',
+            value: 1,
+            category: 1,
+        },
+        {
+            name: '中国',
+            value: 0.8,
+            category: 1,
+        },
+        {
+            name: '欧盟',
+            value: 0.5,
+            category: 1,
+        },
+        {
+            name: '日本',
+            value: 0.5,
+            category: 1,
+        },
+        {
+            name: '美元',
+            value: 0.6,
+            category: 1,
+        },
+        {
+            name: 'US',
+            value: 0.8,
+            category: 1,
+        },
+        {
+            name: '政治',
+            value: 1,
+            category: 1
+        },
+        {
+            name: 'SpaceX',
+            value: 0.673,
+            category: 1
+        },
+        {
+            name: '火星',
+            value: 0.673,
+            category: 0
+        },
+        {
+            name: '脸书',
+            value: 0.673,
+            category: 1
+        },
+        {
+            name: '推特',
+            value: 0.773,
+            category: 1
+        },
+        {
+            name: '谷歌',
+            value: 0.85,
+            category: 0
+        },
+        {
+            name: '消遣',
+            value: 1,
+            category: 0
+        },
+
+        {
+            name: 'Olympic',
+            value: 0.65,
+            category: 0
+        },
+        {
+            name: '公园',
+            value: 0.6,
+            category: 0
+        },
+        {
+            name: '博物馆',
+            value: 0.715,
+            category: 0
+        },
+        {
+            name: '国际',
+            value: 1,
+            category: 0
+        },
+        {
+            name: 'Covid19',
+            value: 0.707,
+            category: 0
+        },
+        {
+            name: '药',
+            value: 0.707,
+            category: 0
+        },
+
+        {
+            name: '疫苗',
+            value: 0.707,
+            category: 0
+        },
+        {
+            name: '隔离',
+            value: 0.607,
+            category: 1
+        },
+        {
+            name: '民生',
+            value: 1,
+            category: 0
+        },
+
+        {
+            name: '篮球',
+            value: 0.8,
+            category: 1
+        },
+        {
+            name: '棒球',
+            value: 0.75,
+            category: 1
+        },
+        {
+            name: '全明星',
+            value: 0.8,
+            category: 0
+        },
+    ]
+
+    //关联数据，value为可信度
+    var dataRelate = [
+        {source: '股市', target: '金融', value: 0.8},
+        {source: '股市', target: '中国', value: 0.7},
+        {source: '美国', target: '金融', value: 0.75},
+        {source: '选举', target: '金融', value: 0.55},
+        {source: '投票', target: '金融', value: 0.55},
+        {source: '拜登', target: '金融', value: 0.8},
+        {source: '金融', target: '财经', value: 0.55},
+        {source: '中国', target: '财经', value: 0.75},
+        {source: '欧盟', target: '财经', value: 0.7},
+        {source: '日本', target: '财经', value: 0.7},
+        {source: '美元', target: '财经', value: 0.7},
+        {source: 'US', target: '财经', value: 0.8},
+        {source: '日本', target: '政治', value: 0.6},
+        {source: '脸书', target: '政治', value: 0.73},
+        {source: '推特', target: '政治', value: 0.83},
+        {source: '火星', target: '政治', value: 0.73},
+        {source: 'SpaceX', target: '政治', value: 0.63},
+        {source: '谷歌', target: '政治', value: 0.87},
+        {source: '谷歌', target: '投票', value: 0.67},
+        {source: '政治', target: '财经', value: 0.55},
+        {source: '狂欢', target: '消遣', value: 0.55},
+        {source: 'Olympic', target: '消遣', value: 0.75},
+        {source: '公园', target: '消遣', value: 0.65},
+        {source: '博物馆', target: '消遣', value: 0.615},
+        {source: '美国', target: '国际', value: 0.75},
+        {source: 'Covid19', target: '国际', value: 0.85},
+        {source: '疫苗', target: '国际', value: 0.65},
+        {source: '药', target: '国际', value: 0.75},
+        {source: '新冠疫苗', target: '国际', value: 0.65},
+        {source: '疫苗', target: '中国', value: 0.65},
+        {source: '谷歌', target: 'Covid19', value: 0.65},
+        {source: '隔离', target: '国际', value: 0.65},
+        {source: '资本', target: '民生', value: 0.75},
+        {source: '棒球', target: '民生', value: 0.85},
+        {source: '篮球', target: '民生', value: 0.8},
+        {source: '全明星', target: '民生', value: 0.65},
+        {source: '消遣', target: 'US', value: 0.65},
+        {source: '民生', target: '消遣', value: 0.75},
+        {source: '篮球', target: '全明星', value: 0.65},
+        {source: '国际', target: '民生', value: 0.85},
+        {source: '全明星', target: 'US', value: 0.75},
+        {source: 'Covid19', target: 'US', value: 0.75},
+        {source: 'Olympic', target: '日本', value: 0.85},
+
+    ];
+
+    myChart.showLoading();
+
+    $.get('./data/main.json', function (json_data) {
+        //生成节点所需的数据对象
+        myChart.hideLoading();
+        var data = dataSet.map(function (node) {
+            return {
+                x: node.x,
+                y: node.y,
+                name: node.name,
+                value: node.value,
+                category: node.category,
+                symbolSize: node.value * 70,//支持度越大，节点越大
+                itemStyle: {
+                    color: node.color,
+                }
+            };
+        });
+
+        //生成连线所需的数据对象
+        var link = dataRelate.map(function (node) {
+            return {
+                source: node.source,
+                target: node.target,
+                value: node.value + '(相关度)',
+                label: {
+                    show: true,
+                    formatter: function (x) {
+                        return node.value;
+                    }
+                },
+                lineStyle: {
+                    width: 20 * (node.value - 0.5),//可信度越高，连线越粗
+                    color: 'source'
+                }
+
+            };
+        });
+
+
+        option = {
+            color: ['#3c4d67', '#fb836f', '#4f88cb', '#4cc6b2', '#66588f', '#dcc963'],
+            // legend: {
+            //     x: 'left',
+            //     top: 110,
+            //     left: 110,
+            //     orient: 'vertical',
+            //     data: ['民生', '政治'],
+            //     textStyle: {
+            //         fontSize: 20,
+            //         fontWeight: 'bold',
+            //     },
+            // },
+            dataZoom: [
+                {
+                    type: 'slider',
+                    show: true,
+                }
+            ],
+            roam: true,
+            tooltip: {},
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'force',//'circular','force'
+                    emphasis: {
+                        focus: 'adjacency'
+                    },
+                    draggable: true,//指示节点是否可以拖动
+                    categories: categories,
+                    data: data,
+                    links: link,
+                    label: {
+                        fontSize: 17,
+                        fontWeight: 700,
+                        show: true
+                    },
+                    edgeSymbol: ['none', 'arrow'],
+                    edgeSymbolSize: 12,
+                    edgeLabel: {
+                        fontSize: 10,
+                        fontWeight: 700,
+                        show: true,
+                    },
+
+                    force: {
+                        repulsion: 500,
+                        gravity: 0.1,
+                        edgeLength: 40
+                    },
+
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 0.5,
+                        shadowBlur: 5,
+                    },
+                    lineStyle: {
+                        opacity: 1,
+                        curveness: 0.3
+                    }
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    })
+
+
+</script>
+
+<!-- js查询图与表格的函数 -->
+<script type="text/javascript">
+    function onSearch(obj) {//js函数开始
+        setTimeout(function () {//因为是即时查询，需要用setTimeout进行延迟，让值写入到input内，再读取
+            var storeId = document.getElementById('store');//获取table的id标识
+            var rowsLength = storeId.rows.length;//表格总共有多少行
+            var key = obj.value;//获取输入框的值
+            var searchCol0 = 0;//要搜索的哪一列，这里是第一列，从0开始数起
+            var searchCol1 = 1;
+            var searchCol2 = 2;
+            for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                var searchText0 = storeId.rows[i].cells[searchCol0].innerHTML;//取得table行，列的值
+                var searchText1 = storeId.rows[i].cells[searchCol1].innerHTML;//取得table行，列的值
+                var searchText2 = storeId.rows[i].cells[searchCol2].innerHTML;//取得table行，列的值
+                if (searchText0.match(key) || searchText1.match(key) || searchText2.match(key)) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                    storeId.rows[i].style.display = '';//显示行操作，
+                } else {
+                    storeId.rows[i].style.display = 'none';//隐藏行操作
+                }
+            }
+
+            var myChart = echarts.init(document.getElementById('pic'));
+            let options = myChart.getOption();
+            let nodesOption = options.series[0].data;
+            let linksOption = options.series[0].links;
+            var nodes_flag = false;
+            var links_flag = false;
+            for (let m in nodesOption) {
+                nodesOption[m].itemStyle.opacity = 0.1;
+                if (nodesOption[m].name.match(key)) {
+                    nodes_flag = true;
+                }
+            }
+            for (let k in linksOption) {
+                linksOption[k].lineStyle.opacity = 0.1;
+                if (linksOption[k].value.match(key)) {
+                    links_flag = true;
+                }
+            }
+            //检索nodes
+            if (nodes_flag) {
+                for (let m in nodesOption) {
+                    //nodesOption[m].itemStyle.opacity = 0.1;
+                    if (nodesOption[m].name.match(key)) {
+                        for (let k in linksOption) {
+                            if (linksOption[k].source == nodesOption[m].name || linksOption[k].target == nodesOption[m].name) {
+                                linksOption[k].lineStyle.opacity = 1;
+                                target_name = linksOption[k].target;
+                                source_name = linksOption[k].source;
+                                for (let i in nodesOption) {
+                                    if (nodesOption[i].name == target_name || nodesOption[i].name == source_name) {
+                                        nodesOption[i].itemStyle.opacity = 1;
+                                    }
+                                }
+                                //options.series[0].lineStyle.opacity = 0.1; //通过修改该节点的透明度来实现高亮的效果
+                            }
+                        }
+                    }
+                }
+            }
+            //检索links
+            if (links_flag) {
+                for (let k in linksOption) {
+                    //nodesOption[m].itemStyle.opacity = 0.1;
+                    if (linksOption[k].value.match(key)) {
+                        linksOption[k].lineStyle.opacity = 1;
+                        for (let m in nodesOption) {
+                            if (nodesOption[m].name == linksOption[k].source || nodesOption[m].name == linksOption[k].target) {
+                                nodesOption[m].itemStyle.opacity = 1;
+                            }
+                            //options.series[0].lineStyle.opacity = 0.1; //通过修改该节点的透明度来实现高亮的效果
+                        }
+                    }
+                }
+            }
+            if (key == '') {
+                for (let k in linksOption) {
+                    linksOption[k].lineStyle.opacity = 1;
+                }
+            }
+            myChart.setOption(options);
+
+        }, 100);//200为延时时间
+    }
+</script>
+
+<!-- js表格排序 -->
+<script>
+    function sortTable1() {
+        var table, rows, sw, i, x, y, jh;
+        table = document.getElementById("store");
+        sw = true;
+        //循环是否完成
+        while (sw) {
+            //完成了就不循环了
+            sw = false;
+            //获取行
+            rows = table.getElementsByTagName("TR");
+            //循环获得每个单元格的内容
+            for (i = 1; i < (rows.length - 1); i++) {
+                //默认不交换
+                jh = false;
+
+                x = rows[i].getElementsByTagName("TD")[0].innerHTML.toLowerCase();
+                y = rows[i + 1].getElementsByTagName("TD")[0].innerHTML.toLowerCase();
+                //比较两个单元格的内容
+                if (x > y) {
+                    //如果正确肯定要交换位子
+                    jh = true;
+                    break;
+                }
+            }
+            if (jh) {
+                //互换一下位子
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                sw = true;
+            }
+        }
+    }
+
+    function sortTable2() {
+        var table, rows, sw, i, x, y, jh;
+        table = document.getElementById("store");
+        sw = true;
+        //循环是否完成
+        while (sw) {
+            //完成了就不循环了
+            sw = false;
+            //获取行
+            rows = table.getElementsByTagName("TR");
+            //循环获得每个单元格的内容
+            for (i = 1; i < (rows.length - 1); i++) {
+                //默认不交换
+                jh = false;
+
+                x = rows[i].getElementsByTagName("TD")[2].innerHTML.toLowerCase();
+                y = rows[i + 1].getElementsByTagName("TD")[2].innerHTML.toLowerCase();
+                //比较两个单元格的内容
+                if (x > y) {
+                    //如果正确肯定要交换位子
+                    jh = true;
+                    break;
+                }
+            }
+            if (jh) {
+                //互换一下位子
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                sw = true;
+            }
+        }
+    }
+</script>
+
+</body>
+
+</html>

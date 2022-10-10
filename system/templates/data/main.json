@@ -1,0 +1,411 @@
+{
+    "categories": [
+        {
+            "name": "政治"
+        },
+        {
+            "name": "经济"
+        },
+        {
+            "name": "科技"
+        },
+        {
+            "name": "娱乐"
+        },
+        {
+            "name": "健康"
+        },
+        {
+            "name": "体育"
+        }
+    ],
+    "dataSet": [
+        {
+            "name": "USA",
+            "value": 0.822,
+            "category": 0
+        },
+        {
+            "name": "Donald Trump",
+            "value": 0.622,
+            "category": 0
+        },
+        {
+            "name": "COVAX",
+            "value": 0.607,
+            "category": 4
+        },
+        {
+            "name": "Carnival",
+            "value": 0.75,
+            "category": 3
+        },
+        {
+            "name": "Joe Biden",
+            "value": 0.622,
+            "category": 0
+        },
+        {
+            "name": "Vote",
+            "value": 0.722,
+            "category": 0
+        },
+        {
+            "name": "Car",
+            "value": 0.7,
+            "category": 5
+        },
+        {
+            "name": "Election",
+            "value": 0.622,
+            "category": 0
+        },
+        {
+            "name": "President",
+            "value": 1.1,
+            "category": 0
+        },
+        {
+            "name": "Economics",
+            "value": 1,
+            "category": 1
+        },
+        {
+            "name": "China",
+            "value": 0.8,
+            "category": 1
+        },
+        {
+            "name": "EU",
+            "value": 0.5,
+            "category": 1
+        },
+        {
+            "name": "Japan",
+            "value": 0.5,
+            "category": 1
+        },
+        {
+            "name": "Dollar",
+            "value": 0.6,
+            "category": 1
+        },
+        {
+            "name": "US",
+            "value": 0.8,
+            "category": 1
+        },
+        {
+            "name": "Technology",
+            "value": 1,
+            "category": 2
+        },
+        {
+            "name": "SpaceX",
+            "value": 0.673,
+            "category": 2
+        },
+        {
+            "name": "Mars",
+            "value": 0.673,
+            "category": 2
+        },
+        {
+            "name": "Facebook",
+            "value": 0.673,
+            "category": 2
+        },
+        {
+            "name": "Twitter",
+            "value": 0.773,
+            "category": 2
+        },
+        {
+            "name": "Google",
+            "value": 0.85,
+            "category": 2
+        },
+        {
+            "name": "Recreation",
+            "value": 1,
+            "category": 3
+        },
+        {
+            "name": "Olympic",
+            "value": 0.65,
+            "category": 3
+        },
+        {
+            "name": "Park",
+            "value": 0.6,
+            "category": 3
+        },
+        {
+            "name": "Museum",
+            "value": 0.715,
+            "category": 3
+        },
+        {
+            "name": "Health",
+            "value": 1,
+            "category": 4
+        },
+        {
+            "name": "Covid19",
+            "value": 0.507,
+            "category": 4
+        },
+        {
+            "name": "Drug",
+            "value": 0.707,
+            "category": 4
+        },
+        {
+            "name": "Vaccine",
+            "value": 0.707,
+            "category": 4
+        },
+        {
+            "name": "Quarantine",
+            "value": 0.607,
+            "category": 4
+        },
+        {
+            "name": "Sports",
+            "value": 1,
+            "category": 5
+        },
+        {
+            "name": "Basketball",
+            "value": 0.8,
+            "category": 5
+        },
+        {
+            "name": "Baseball",
+            "value": 0.75,
+            "category": 5
+        },
+        {
+            "name": "All-Star",
+            "value": 0.8,
+            "category": 5
+        }
+    ],
+    "dataRelate": [
+        {
+            "source": "Donald Trump",
+            "target": "President",
+            "value": 0.8
+        },
+        {
+            "source": "Donald Trump",
+            "target": "China",
+            "value": 0.7
+        },
+        {
+            "source": "USA",
+            "target": "President",
+            "value": 0.75
+        },
+        {
+            "source": "Election",
+            "target": "President",
+            "value": 0.55
+        },
+        {
+            "source": "Vote",
+            "target": "President",
+            "value": 0.55
+        },
+        {
+            "source": "Joe Biden",
+            "target": "President",
+            "value": 0.8
+        },
+        {
+            "source": "President",
+            "target": "Economics",
+            "value": 0.55
+        },
+        {
+            "source": "China",
+            "target": "Economics",
+            "value": 0.75
+        },
+        {
+            "source": "EU",
+            "target": "Economics",
+            "value": 0.7
+        },
+        {
+            "source": "Japan",
+            "target": "Economics",
+            "value": 0.7
+        },
+        {
+            "source": "Dollar",
+            "target": "Economics",
+            "value": 0.7
+        },
+        {
+            "source": "US",
+            "target": "Economics",
+            "value": 0.8
+        },
+        {
+            "source": "Japan",
+            "target": "Technology",
+            "value": 0.6
+        },
+        {
+            "source": "Facebook",
+            "target": "Technology",
+            "value": 0.73
+        },
+        {
+            "source": "Twitter",
+            "target": "Technology",
+            "value": 0.83
+        },
+        {
+            "source": "Mars",
+            "target": "Technology",
+            "value": 0.73
+        },
+        {
+            "source": "SpaceX",
+            "target": "Technology",
+            "value": 0.63
+        },
+        {
+            "source": "Google",
+            "target": "Technology",
+            "value": 0.87
+        },
+        {
+            "source": "Google",
+            "target": "Vote",
+            "value": 0.67
+        },
+        {
+            "source": "Technology",
+            "target": "Economics",
+            "value": 0.55
+        },
+        {
+            "source": "Carnival",
+            "target": "Recreation",
+            "value": 0.55
+        },
+        {
+            "source": "Olympic",
+            "target": "Recreation",
+            "value": 0.75
+        },
+        {
+            "source": "Park",
+            "target": "Recreation",
+            "value": 0.65
+        },
+        {
+            "source": "Museum",
+            "target": "Recreation",
+            "value": 0.615
+        },
+        {
+            "source": "USA",
+            "target": "Health",
+            "value": 0.75
+        },
+        {
+            "source": "Covid19",
+            "target": "Health",
+            "value": 0.85
+        },
+        {
+            "source": "Vaccine",
+            "target": "Health",
+            "value": 0.65
+        },
+        {
+            "source": "Drug",
+            "target": "Health",
+            "value": 0.75
+        },
+        {
+            "source": "COVAX",
+            "target": "Health",
+            "value": 0.65
+        },
+        {
+            "source": "Vaccine",
+            "target": "China",
+            "value": 0.65
+        },
+        {
+            "source": "Google",
+            "target": "Covid19",
+            "value": 0.65
+        },
+        {
+            "source": "Quarantine",
+            "target": "Health",
+            "value": 0.65
+        },
+        {
+            "source": "Car",
+            "target": "Sports",
+            "value": 0.75
+        },
+        {
+            "source": "Baseball",
+            "target": "Sports",
+            "value": 0.85
+        },
+        {
+            "source": "Basketball",
+            "target": "Sports",
+            "value": 0.8
+        },
+        {
+            "source": "All-Star",
+            "target": "Sports",
+            "value": 0.65
+        },
+        {
+            "source": "Recreation",
+            "target": "US",
+            "value": 0.65
+        },
+        {
+            "source": "Sports",
+            "target": "Recreation",
+            "value": 0.75
+        },
+        {
+            "source": "Basketball",
+            "target": "All-Star",
+            "value": 0.65
+        },
+        {
+            "source": "Health",
+            "target": "Sports",
+            "value": 0.85
+        },
+        {
+            "source": "All-Star",
+            "target": "US",
+            "value": 0.75
+        },
+        {
+            "source": "Covid19",
+            "target": "US",
+            "value": 0.75
+        },
+        {
+            "source": "Olympic",
+            "target": "Japan",
+            "value": 0.85
+        }
+    ]
+}

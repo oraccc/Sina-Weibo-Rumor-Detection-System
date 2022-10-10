@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-flex" tabindex="0" hidefocus="true">
+
+        <div style="width:75%;">
+            <div style="font-size: 24px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+                系统框架图
+            </div>
+            <hr>
+            <img src="{% static 'images/sum2.png' %}" style="margin-left: 60px;">
+            <hr>
+
+            <p style="font-size: 18px;font-weight: 700;">
+                本系统基于CARMN，RGB-N，TextCNN，SimNet等算法实现。系统的工作平台为网页端。
+                系统使用Python3.6进行开发，系统网页分为前端和后端两部分。其中前端使用HTML5+CSS+Javascript开发；后端基于Python的Django 3.0.9与Wagtail 2.9.3框架实现。
+                本系统主要使用的第三方库有OpenCV，Pytorch，TensorFlow等。在数据库方面，我们采用了Django自带数据库来存储我们的微博图像数据与微博文本数据。
+            </p>
+            <p style="font-size: 18px;font-weight: 700;">
+                本系统的“无关微博过滤模块”，“已知虚假新闻判别模块”，“基于溯源的图文相关检测模块”，“图片篡改检测模块”与“评论语义分析模块”五个模块均在网页端完成。
+                其中应用到的深度学习网络模型的训练在服务器预先完成，然后将训练得到的模型文件迁移入网页端应用中。
+                调用各模块功能时，网页后端只需调用封装好的函数接口进行图像文件的处理，并提取各模块的结果转化为数据存入数据库。
+                前后端交互时，前端利用form表单或者url请求系统后端，后端根据urls.py的路由设置执行views.py文件中对应的处理函数，
+                这些函数调用通过预先定义的函数接口访问预训练的深度学习模型，深度学习模型会访问微博图文数据库，并使用数据库的文本与图片进行测试，将模型预测结果保存在Neo4j虚假微博数据库中，
+                并将返回数据通过render()函数回传到前端页面，显示结果，除了深度学习网络返回的数据部分外，系统还使用了静态文件库中的CSS文件和JavaScript文件提供的样式与动画来美化系统，
+                并将数据库中的数据进行可视化处理，以提升用户的使用体验。
+            </p>
+            <hr>
+
+
+        </div>
+
+    </div>
+
+    <!-- 表格css -->
+    <style>
+        td {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        th {
+            background: gold;
+            text-align: center;
+            font-weight: 700;
+            font-size: 20px;
+            height: 40px;
+        }
+
+        tr {
+            background: #fff;
+        }
+
+        tr:hover {
+            background: rgb(182, 182, 177);
+        }
+    </style>
+
+    <style>
+        .btns input {
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            font-weight: 700;
+            background-color: gold;
+            border: 2 solid black;
+            border-radius: 5px;
+        }
+
+        .small_btns input {
+            width: 70px;
+            height: 25px;
+            font-size: 10px;
+            font-weight: 700;
+            background-color: gainsboro;
+            border: 2 solid black;
+            border-radius: 3px;
+        }
+    </style>
+
+
+
+
+</body>
+
+</html>

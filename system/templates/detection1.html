@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div class="half_left2" style="height:765px">
+            <div style="font-size: 22px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+                Weibo Post 1 检测结果界面
+            </div>
+            <hr>
+            <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                「微博内容概要」
+            </div>
+            <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                微博正文
+            </div>
+            <div style="border:2px dotted #196b80;margin:10px 30px;border-radius: 10px;">
+                <p style="font-size: 16px; font-weight: 700;margin:10px;">
+                    四川雅安 2013年4月20日。一男子因为LOL打团不肯离开。最后被压房下。还好网管及时救出。 救出的时候他说了句话：人在塔在！ 他的名字叫德玛西亚！！这尼玛是用生命在撸啊……
+                </p>
+            </div>
+            <hr>
+            <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                微博配图
+            </div>
+            <div style="border:2px dotted #196b80;margin:10px 30px;border-radius: 10px;">
+                <img src="{% static 'images/rumors_sample/rumor1.jpg' %}" height="175" width="225"
+                    style="margin-left:55px;">
+            </div>
+            <hr>
+            <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                微博其余信息
+            </div>
+            <br>
+            <table width="300" border="3" id="store" style="margin-left: 40px;">
+                <!-- id与函数的getId一致 -->
+                <th>发帖人user_id</th>
+                <th>转发数</th>
+                <th>评论数</th>
+                <th>点赞数</th>
+                <tr>
+                    <td>38597079</td>
+                    <td>410</td>
+                    <td>76</td>
+                    <td>14</td>
+                </tr>
+            </table>
+            <hr>
+
+
+        </div>
+        <div class="half_center" style="height:765px">
+
+            <div class="gap-20"></div>
+            <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                「综合检测结果」
+            </div>
+            <br>
+            <div class="result_box">
+                <br>
+                <div style="font-size: 24px;font-weight: bold;text-align: center;color:#e91b14;">疑似虚假新闻微博</div>
+
+            </div>
+            <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                判别原因
+            </div>
+            <div class="small_result_box">
+                <br>
+                <div style="font-size: 24px;font-weight: bold;text-align: center;color:#192280;">疑似盗图新闻</div>
+            </div>
+
+            <hr>
+            <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+                「分模块检测结果」
+            </div>
+            <div style="width:250px;height:125px;border:2px dotted #196b80;border-radius: 10px;margin-left: 170px;">
+                <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                    无关微博过滤模块
+                </div>
+                <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                    需待检测微博
+                </div>
+            </div>
+            <div style="position:relative;width:250px;height:125px;top:8px;left:27px;border:2px dotted #196b80;border-radius: 10px;">
+                <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                    已知虚假新闻检测模块
+                </div>
+                <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                    非已知虚假新闻
+                </div>
+            </div>
+            <div style="position:relative;width:250px;height:125px;top:-117px;left:308px;border:2px dotted #196b80;border-radius: 10px;">
+                <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                    盗图新闻检测模块
+                </div>
+                <div style="font-size: 22px;font-weight: bold;color:#e91b14;text-align: center;margin-top: 10px;">
+                    疑似盗图新闻
+                </div>
+                <div class="btns">
+                    <input id="detail_btn" type="button" value="检测细节" style="margin-left:60px;margin-top: 10px;">
+                </div>
+            </div>
+
+            <div style="position:relative;width:250px;height:125px;top:-112px;left:27px;border:2px dotted #196b80;border-radius: 10px;">
+                <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                    图片篡改检测模块
+                </div>
+                <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                    非篡改图片
+                </div>
+            </div>
+            <div style="position:relative;width:250px;height:125px;top:-237px;left:308px;border:2px dotted #196b80;border-radius: 10px;">
+                <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                    评论语义分析模块
+                </div>
+                <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                    无需检测
+                </div>
+            </div>
+
+            <hr>
+        </div>
+    </div>
+
+    <!-- 表格css -->
+    <style>
+        th,
+        td {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        th {
+            background: gold;
+        }
+
+        tr {
+            background: #fff;
+        }
+
+        tr:hover {
+            background: rgb(182, 182, 177);
+        }
+    </style>
+
+    <style>
+        .btns input {
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            font-weight: 700;
+            background-color: gold;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+    </style>
+
+
+
+
+    <script>
+        $("#detail_btn").click(function () {
+            xadmin.open('Weibo Post 1 盗图新闻检测细节', '/detection_text',900,700)
+        })
+    </script>
+
+</body>
+
+</html>

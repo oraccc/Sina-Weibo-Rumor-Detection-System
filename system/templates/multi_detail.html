@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8" name="referrer" content="never">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome/font-awesome.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+{% for w in weibo %}
+<div class="container-flex" tabindex="0" hidefocus="true">
+    <div class="half_left2">
+        <div style="font-size: 22px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+            检测结果界面
+        </div>
+        <hr>
+        <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            「微博内容概要」
+        </div>
+        <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            微博正文
+        </div>
+        <div style="border:2px dotted #196b80;margin:10px 30px;border-radius: 10px;">
+            <p style="font-size: 16px; font-weight: 700;margin:10px;">
+                {{ w.content }}
+            </p>
+        </div>
+        <hr>
+        <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            微博配图
+        </div>
+        <div style="border:2px dotted #196b80;margin:10px 30px;border-radius: 10px;">
+            <script type="text/javascript">
+                var url = "{{w.img_url}}";
+                document.write('<img src="' + url + '" height="175" width="275" style="margin-left:30px"/>');
+            </script>
+        </div>
+        <hr>
+        <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            微博其余信息
+        </div>
+        <br>
+        <table width="300" border="3" id="store" style="margin-left: 40px;">
+            <!-- id与函数的getId一致 -->
+            <th>发帖人user_id</th>
+            <th>转发数</th>
+            <th>评论数</th>
+            <th>点赞数</th>
+            <tr>
+                <td>{{ w.username }}</td>
+                <td>{{ w.zhuanfa }}</td>
+                <td>{{ w.pinglun }}</td>
+                <td>{{ w.dianzan }}</td>
+            </tr>
+        </table>
+        <hr>
+        <a href="/unverified_database"><input id="return_btn" type="button" value="返回数据库" style="margin-left:140px;margin-top: 10px;width: 120px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: 700;
+        background-color: gold;
+        border: 2px solid black;
+        border-radius: 5px;" > </a>
+
+
+        <div class="gap-60"></div>
+
+    </div>
+    <div class="half_center2">
+
+        <div class="gap-20"></div>
+        <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            「综合检测结果」
+        </div>
+        <br>
+        <div class="result_box">
+            <br>
+            <div style="font-size: 24px;font-weight: bold;text-align: center;color:#e91b14;">疑似虚假新闻微博</div>
+        </div>
+        <div style="font-size: 20px;font-weight: bold;color:#196b80;text-align: center;margin:10px auto;">
+            判别原因
+        </div>
+        <div class="small_result_box">
+            <br>
+            <div style="font-size: 24px;font-weight: bold;text-align: center;color:#192280;">{{ w.fake_type }}</div>
+        </div>
+        <hr>
+        <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin-top:40px;">
+            「微博管理员操作区域」
+        </div>
+        <div class="container-flex" tabindex="0" hidefocus="true"
+             style="border:5px dotted #196b80;width:80%;height: 300px; background-color: #d7fdf5; margin-left: 60px;margin-top: 20px;">
+            <div style="width:50%">
+                <i class="fa fa-cloud-upload fa-5x" style="color:#196b80;margin-top: 20px;margin-left:80px;"></i>
+                <div style="width:70%;font-size: 20px;font-weight: bold;color:#192280;text-align: center;margin-top:10px;margin-left: 40px;">
+                    系统判断正确，提交至确认数据库
+                </div>
+                <form action="http://127.0.0.1:8000/multi_detect/" method="post">
+                    <input type="text" name="weibo_id" value={{ w.id }}
+                           style="background-color:transparent;border:0;height:0px;weight:0px;color:transparent;size:0px;padding-bottom: 0px">
+                    <input type="submit" name="submit" value="提交"
+                           style="margin-left:45px;width: 150px;height: 50px;font-size: 20px;font-weight: 700;background-color: #7fff00;border: 2px solid black;border-radius: 5px;">
+                </form>
+            </div>
+            <div style="width:50%">
+                <i class="fa fa-trash fa-5x" style="color:#196b80;margin-top: 20px;margin-left: 90px;"></i>
+                <div style="width:70%;font-size: 20px;font-weight: bold;color:#192280;text-align: center;margin-top:10px;margin-left: 40px;">
+                    系统判断错误，从疑似数据库中删除
+                </div>
+                <form action="http://127.0.0.1:8000/multi_detect/" method="post">
+                    <input type="text" name="weibo_id" value={{ w.id }}
+                           style="background-color:transparent;border:0;height:0px;weight:0px;color:transparent;size:0px;padding-bottom: 0px">
+                    <input type="submit" name="delete" value="删除"
+                           style="margin-left:45px;width: 150px;height: 50px;font-size: 20px;font-weight: 700;background-color: #00ee76;border: 2px solid black;border-radius: 5px;">
+                </form>
+            </div>
+        </div>
+        <div class="gap-60"></div>
+        <div class="gap-20"></div>
+    </div>
+    <div class="half_right2">
+        <div style="font-size: 22px;font-weight: bold;color:#196b80;text-align: center;margin-top:40px;">
+            「分模块检测结果」
+        </div>
+        <div style="width:250px;height:125px;border:2px dotted #196b80;border-radius: 10px;margin-left: 70px;margin-top: 10px;">
+            <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                无关微博过滤模块
+            </div>
+            <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                需待检测微博
+            </div>
+        </div>
+        <div style="position:relative;width:250px;height:125px;left:70px;border:2px dotted #196b80;border-radius: 10px; margin-top: 10px;">
+            <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                已知虚假新闻检测模块
+            </div>
+            {% if w.fake_type == "已知假新闻" %}
+            <div style="font-size: 22px;font-weight: bold;color:#e91b14;text-align: center;margin-top: 10px;">
+                已知虚假新闻
+            </div>
+
+            {% else %}
+            <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                非已知虚假新闻
+            </div>
+            {% endif %}
+        </div>
+        <div style="position:relative;width:250px;height:125px;left:70px;border:2px dotted #196b80;border-radius: 10px; margin-top: 10px;">
+            <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                盗图新闻检测模块
+            </div>
+            {% if w.fake_type == "盗图新闻" %}
+            <div style="font-size: 22px;font-weight: bold;color:#e91b14;text-align: center;margin-top: 10px;">
+                疑似盗图新闻
+            </div>
+            <div class="btns">
+                <input id="detail_btn" type="button" value="检测细节" style="margin-left:60px;margin-top: 10px;">
+            </div>
+            {% else %}
+            <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                非盗图新闻
+            </div>
+            {% endif %}
+        </div>
+
+        <div style="position:relative;width:250px;height:125px;left:70px;border:2px dotted #196b80;border-radius: 10px; margin-top: 10px;">
+            <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                图片篡改检测模块
+            </div>
+            {% if w.fake_type == "图片篡改" %}
+            <div style="font-size: 22px;font-weight: bold;color:#e91b14;text-align: center;margin-top: 10px;">
+                图片篡改
+            </div>
+            <div class="btns">
+                <input id="detail_btn" type="button" value="检测细节" style="margin-left:60px;margin-top: 10px;">
+            </div>
+            {% else %}
+            <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                非篡改图片
+            </div>
+            {% endif %}
+        </div>
+        <div style="position:relative;width:250px;height:125px;left:70px;border:2px dotted #196b80;border-radius: 10px; margin-top: 10px;">
+            <div style="font-size: 20px;font-weight: bold;color:#113741;text-align: center;">
+                评论语义分析模块
+            </div>
+            {% if w.fake_type == "评论语义" %}
+            <div style="font-size: 22px;font-weight: bold;color:#e91b14;text-align: center;margin-top: 10px;">
+                评论判别虚假
+            </div>
+            <div class="btns">
+                <input id="detail_btn" type="button" value="检测细节" style="margin-left:60px;margin-top: 10px;">
+            </div>
+            {% else %}
+            <div style="font-size: 22px;font-weight: bold;color:#009c8e;text-align: center;margin-top: 10px;">
+                无需检测
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- 表格css -->
+<style>
+    th,
+    td {
+        text-align: center;
+        font-weight: 700;
+    }
+
+    th {
+        background: gold;
+    }
+
+    tr {
+        background: #fff;
+    }
+
+    tr:hover {
+        background: rgb(182, 182, 177);
+    }
+</style>
+
+<style>
+    .btns input {
+        width: 120px;
+        height: 40px;
+        font-size: 16px;
+        font-weight: 700;
+        background-color: gold;
+        border: 2px solid black;
+        border-radius: 5px;
+    }
+</style>
+
+
+<script>
+    $("#detail_btn").click(function () {
+        xadmin.open('Weibo Post 1 图文匹配检测细节', '/detection_text', 900, 700)
+    })
+</script>
+
+
+{% endfor %}
+
+
+</body>
+
+</html>

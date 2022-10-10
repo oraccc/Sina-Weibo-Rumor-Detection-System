@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div style="width:80%;">
+            <div style="font-size: 24px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+                系统数据库检测分析
+            </div>
+            <hr>
+            <br>
+            <div style="height: 300px;">
+                <table width="1350" border="3" id="store" style="margin-left: 0px;">
+                    <!-- id与函数的getId一致 -->
+                    <th>模块名</th>
+                    <th>检测到的虚假微博数</th>
+                    <th>误判数</th>
+                    <th>漏判数</th>
+                    <th>准确率</th>
+                    <th>召回率</th>
+                    <tr>
+                        <td bgcolor="#bdc1c7">无关微博过滤模块</td>
+                        <td>none</td>
+                        <td bgcolor='#ff6347'>218</td>
+                        <td bgcolor='#ff7f50'>193</td>
+                        <td bgcolor='#4eee94'>94.55%</td>
+                        <td bgcolor='#98fb98'>95.27%</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#bdc1c7">已知虚假新闻检测模块</td>
+                        <td>398</td>
+                        <td bgcolor='#ff6347'>24</td>
+                        <td bgcolor='#ff7f50'>18</td>
+                        <td bgcolor='#4eee94'>93.97%</td>
+                        <td bgcolor='#98fb98'>95.48%</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#bdc1c7">图片篡改检测模块</td>
+                        <td>83</td>
+                        <td bgcolor='#ff6347'>9</td>
+                        <td bgcolor='#ff7f50'>11</td>
+                        <td bgcolor='#4eee94'>89.16%</td>
+                        <td bgcolor='#98fb98'>86.75%</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#bdc1c7">基于溯源的盗图新闻检测模块</td>
+                        <td>832</td>
+                        <td bgcolor='#ff6347'>78</td>
+                        <td bgcolor='#ff7f50'>31</td>
+                        <td bgcolor='#4eee94'>90.63%</td>
+                        <td bgcolor='#98fb98'>96.27%</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#bdc1c7">评论语义分析模块</td>
+                        <td>788</td>
+                        <td bgcolor='#ff6347'>29</td>
+                        <td bgcolor='#ff7f50'>27</td>
+                        <td bgcolor='#4eee94'>96.32%</td>
+                        <td bgcolor='#98fb98'>96.57%</td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#bdc1c7">系统整体</td>
+                        <td>2009</td>
+                        <td bgcolor='#ff6347'>136</td>
+                        <td bgcolor='#ff7f50'>269</td>
+                        <td bgcolor='#4eee94'>93.24%</td>
+                        <td bgcolor='#98fb98'>87.13%</td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div class="container-flex" tabindex="0" hidefocus="true">
+                <div id="pic1" style="width: 720px;height:500px;margin: 20px auto;"></div>
+                <div id="pic2" style="width: 480px;height:500px;margin: 20px auto;"></div>
+            </div>
+            </div>
+
+        </div>
+
+        <!-- 表格css -->
+        <style>
+            td {
+                text-align: center;
+                font-size: 21px;
+                font-weight: 700;
+                height: 40px;
+            }
+
+            th {
+                background: gold;
+                text-align: center;
+                font-weight: 700;
+                font-size: 20px;
+                height: 40px;
+            }
+
+            tr {
+                background: #fff;
+            }
+
+            tr:hover {
+                background: rgb(182, 182, 177);
+            }
+        </style>
+
+        <style>
+            .btns input {
+                width: 120px;
+                height: 40px;
+                font-size: 16px;
+                font-weight: 700;
+                background-color: gold;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+
+            .small_btns input {
+                width: 70px;
+                height: 25px;
+                font-size: 10px;
+                font-weight: 700;
+                background-color: gainsboro;
+                border: 2px solid black;
+                border-radius: 3px;
+            }
+        </style>
+
+
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('pic1'));
+            var option;
+
+            option = {
+                color: ['#86e3ce', '#dde6a5', '#ffdd94', '#fa897b'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        crossStyle: {
+                            color: '#999'
+                        }
+                    }
+                },
+                legend: {
+                    data: ['准确率', '召回率', '准确率-line', '召回率-line'],
+                    textStyle: {
+                        fontSize:21,
+                        fontWeight:'bold',
+                    }
+                },
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ['过滤', '已知', '篡改', '溯源', '评论语义', '系统整体'],
+                        axisPointer: {
+                            type: 'shadow'
+                        },
+                        axisLabel: {
+                            interval: 0,
+                            textStyle:{
+                                fontSize:18,
+                                fontWeight:'bold',
+                            }
+                        }
+
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value',
+                        min: 85,
+                        max: 100,
+                        interval: 10,
+                        axisLabel: {
+                            formatter: '{value} %',
+                            textStyle:{
+                                fontSize:18,
+                            }
+                        }
+                    },
+                    {
+                        type: 'value',
+                        min: 50,
+                        max: 100,
+                        interval: 10,
+                        axisLabel: {
+                            formatter: '{value} %',
+                            textStyle:{
+                                fontSize:18,
+                            }
+                        }
+                    }
+                ],
+                series: [
+                    {
+                        name: '准确率',
+                        type: 'bar',
+                        data: [94.55, 93.97, 89.16, 90.63, 96.32, 93.24]
+                    },
+                    {
+                        name: '召回率',
+                        type: 'bar',
+                        data: [95.27, 95.48, 86.75, 96.27, 96.57, 87.13]
+                    },
+                    {
+                        name: '准确率-line',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: [94.55, 93.97, 89.16, 90.63, 96.32, 93.24],
+                        lineStyle: {
+                            width: 4
+                        }
+                    },
+                    {
+                        name: '召回率-line',
+                        type: 'line',
+                        yAxisIndex: 1,
+                        data: [95.27, 95.48, 86.75, 96.27, 96.57, 87.13],
+                        lineStyle: {
+                            width: 4
+                        }
+                    }
+                ]
+            };
+
+
+            myChart.setOption(option);
+
+
+        </script>
+
+        <script>
+            var chartDom = document.getElementById('pic2');
+            var myChart = echarts.init(chartDom);
+            var option;
+
+option = {
+    title: {
+        text: '系统检测运行速率',
+        left: 'center',
+        top: 0,
+        textStyle: {
+            fontSize: 22,
+            color: "#192080"
+        },
+    },
+    series: [{
+        type: 'gauge',
+        axisLine: {
+            lineStyle: {
+                width: 30,
+                color: [
+                    [0.3, '#67e0e3'],
+                    [0.7, '#37a2da'],
+                    [1, '#fd666d']
+                ]
+            }
+        },
+        pointer: {
+            itemStyle: {
+                color: 'auto'
+            }
+        },
+        axisTick: {
+            distance: -30,
+            length: 8,
+            lineStyle: {
+                color: '#fff',
+                width: 2
+            }
+        },
+        splitLine: {
+            distance: -30,
+            length: 30,
+            lineStyle: {
+                color: '#fff',
+                width: 4
+            }
+        },
+        axisLabel: {
+            color: 'auto',
+            distance: 40,
+            fontSize: 15
+        },
+        detail: {
+            valueAnimation: true,
+            formatter: '{value} ms/条',
+            color: 'auto',
+            fontSize: 24
+        },
+        data: [{
+            value: 70
+        }]
+    }]
+};
+
+option && myChart.setOption(option);
+        </script>
+</body>
+
+</html>

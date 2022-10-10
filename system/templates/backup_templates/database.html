@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+    <!-- Main Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- layui -->
+    <script type="text/javascript" src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <!-- xadmin -->
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- echarts -->
+    <script type="text/javascript" src="{% static 'js/echarts.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts.js' %}"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div style="width:65%;">
+            <div style="font-size: 24px;font-weight: bold;color:#192e80;text-align: center;margin:10px auto;">
+                系统虚假新闻数据库
+            </div>
+            <hr>
+            <div>
+                <input placeholder="请输入需要查询的内容" name="key" type="text" id="key" onkeydown="onSearch(this)" value=""
+                    style="width:400px;height:40px;margin-left: 340px;" />
+            </div>
+            <br>
+            <p>
+                <button onclick="sortTable1()" style="margin-left: 360px;">按微博ID排序</button>
+                <button onclick="sortTable2()">按发帖时间排序</button>
+                <button onclick="sortTable3()">按举报原因排序</button>
+            </p>
+            <div style="overflow-y:auto;height: 700px;">
+                <div style="height:1500px">
+                    <table width="1075" border="3" id="store" style="margin-left: 0px;">
+                        <!-- id与函数的getId一致 -->
+                        <th>微博id</th>
+                        <th>微博正文</th>
+                        <th>微博配图链接</th>
+                        <th>发帖时间</th>
+                        <th>转发数</th>
+                        <th>评论数</th>
+                        <th>点赞数</th>
+                        <th>举报原因</th>
+                        <th>操作</th>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3492710012471539</td>
+                            <td style="width:275px;">东北证券吉林公主岭营业部今天上午被愤怒的股民点燃.</td>
+                            <td style="width:200px;">http://ww2.sinaimg.cn/large/
+                                3dc2ac30jw1dx457fr1owj.jpg</td>
+                            <td>2020-09-21 14:53</td>
+                            <td>14</td>
+                            <td>10</td>
+                            <td>0</td>
+                            <td style="width:75px;" bgcolor='#86e3ce'>图文不符</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="edit_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3569866093381177</td>
+                            <td>被和谐好几次了。继续吧。还有靠谱的人联系我。 我在:2韩国</td>
+                            <td>http://ww2.sinaimg.cn/large/
+                                817561d7jw1e3yakgqkalj20at097ab1.jpg</td>
+                            <td>2020-04-22 12:44</td>
+                            <td>18</td>
+                            <td>8</td>
+                            <td>1</td>
+                            <td bgcolor='#fa897b'>评论语义</td>
+                            <td>
+                                <div class=" small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                            </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3708671865257353</td>
+                            <td>清华大学院长阎学通：与美国相比，我觉得中国早就是超级大国了：污染超级大国，腐败超级大国...</td>
+                            <td>http://ww3.sinaimg.cn/large/
+                                4fca5397gw1dtjjwget52j.jpg</td>
+                            <td>2020-05-10 13:28</td>
+                            <td>1102</td>
+                            <td>248</td>
+                            <td>75</td>
+                            <td bgcolor='#dde6a5'>已知谣言</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3452401115729655</td>
+                            <td>审判长先生：我作为一名三陪女，站在这个庄严的法庭上我感到羞耻。我曾给原市委书记韦君梓做过两年二奶</td>
+                            <td>http://ww3.sinaimg.cn/large/
+                                4fca5397gw1dtjjwget52j.jpg</td>
+                            <td>2020-06-02 09:20</td>
+                            <td>63</td>
+                            <td>12</td>
+                            <td>0</td>
+                            <td bgcolor='#dde6a5'>已知谣言</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3875414273514704</td>
+                            <td>世界那么大，那里才安全？ 2兰州·榆中县第六中学</td>
+                            <td>http://ww3.sinaimg.cn/large/
+                                006c4WZjjw1ev12aizvcoj30et0m8abl.jpg</td>
+                            <td>2020-08-13 16:23</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td bgcolor='#86e3ce'>图文不符</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3687854410090549</td>
+                            <td>#马航飞机失联#看完这张照片你一定会质疑到不能行！但事实在证明马来西亚在隐瞒什么！</td>
+                            <td>http://ww4.sinaimg.cn/large/
+                                5d6648f2jw1eeepc8d7yvj20hs0np77f.jpg</td>
+                            <td>2020-03-14 02:47</td>
+                            <td>22</td>
+                            <td>20</td>
+                            <td>10</td>
+                            <td bgcolor='#ffdd94'>图片篡改</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3567981999315667</td>
+                            <td>蓄谋已久的复旦投毒。林某本想杀姜成，误杀了黄洋。</td>
+                            <td>http://ww1.sinaimg.cn/large/
+                                7c27db9fjw1dwsyufp10qj.jpg</td>
+                            <td>2020-09-11 22:48</td>
+                            <td>0</td>
+                            <td>12</td>
+                            <td>0</td>
+                            <td bgcolor='#dde6a5'>已知谣言</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3489205663102794</td>
+                            <td>看来中日真的要开打了！局势紧张啊！</td>
+                            <td>http://ww1.sinaimg.cn/large/
+                                7c27db9fjw1dwsyufp10qj.jpg</td>
+                            <td>2020-09-11 22:48</td>
+                            <td>16</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td bgcolor='#ffdd94'>图片篡改</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3556551304180279</td>
+                            <td>就因为刚才那条微博，我受到了我朋友的严厉批评！</td>
+                            <td>http://ww3.sinaimg.cn/large/
+                                84f41de9jw1e2rtdl9g1cj.jpg</td>
+                            <td>2020-03-16 18:48</td>
+                            <td>144</td>
+                            <td>117</td>
+                            <td>11</td>
+                            <td bgcolor='#fa897b'>评论语义</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3679006043852862</td>
+                            <td>陕西永寿刘爱玲惨死，震动了整个永寿。原因是她家被当地政府强拆，父亲因此上访被打残关进黑监狱！</td>
+                            <td>http://ww4.sinaimg.cn/large/
+                                7608d41djw1edmh42il34j20bc0au0t4.jpg</td>
+                            <td>2020-02-17 16:47</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>2</td>
+                            <td bgcolor='#dde6a5'>已知谣言</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3555027400082577</td>
+                            <td>刘丽是个普通的劳动妇女，她的良心很正，是一个能够代表人民利益的合格的“人大代表”。</td>
+                            <td>http://ww2.sinaimg.cn/large/
+                                670ea1ecjw1e5mfir8o7zj20c80fn3zn.jpg</td>
+                            <td>2020-06-13 13:09</td>
+                            <td>158</td>
+                            <td>38</td>
+                            <td>8</td>
+                            <td bgcolor='#86e3ce'>图文不符</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3588716616221113</td>
+                            <td>太震憾了！这是拍自四川大凉山区、贵州毕节两个贫困县儿童现状的照片。有如此破衣烂衫，中国梦又如何实现！</td>
+                            <td>http://ww2.sinaimg.cn/large/
+                                670ea1ecjw1e5mfir8o7zj20c80fn3zn.jpg</td>
+                            <td>2020-06-13 13:09</td>
+                            <td>76</td>
+                            <td>29</td>
+                            <td>1</td>
+                            <td bgcolor='#ffdd94'>图片篡改</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3506905844043560</td>
+                            <td>2011深圳大运800亿，2010广州亚运1200亿，上海世博3000亿，2008北京奥运3000亿</td>
+                            <td>http://ww3.sinaimg.cn/large/
+                                6b4378a6jw1dydfnwi130j.jpg</td>
+                            <td>2020-10-30 19:02</td>
+                            <td>17</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td bgcolor='#dde6a5'>已知谣言</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3875734777442426</td>
+                            <td>中国政府公信力何在？一个没有公信力的政府能存在多久？宁可相信道听途说也不相信政府的国家还能存在多久？</td>
+                            <td>http://ww1.sinaimg.cn/large/
+                                b3c7dfc7jw1ev22zj858mj20lc0zktdc.jpg</td>
+                            <td>2021-04-16 00:49</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td bgcolor='#86e3ce'>图文不符</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#bdc1c7">3867068636394068</td>
+                            <td>**教委紧急通知**:牛肉不许吃了。未接到解除通知之前不许买牛肉。 钓鱼乡辉山乳液养牛场的牛生病了，牛死了人扒皮感染了炭疽病，皮肤溃烂，高烧不退。</td>
+                            <td>http://ww1.sinaimg.cn/large/
+                                c5796fddjw1euaft47ej6j20hs0nzq3p.jpg</td>
+                            <td>2020-07-21 05:49</td>
+                            <td>0</td>
+                            <td>7</td>
+                            <td>1</td>
+                            <td bgcolor='#86e3ce'>图文不符</td>
+                            <td>
+                                <div class="small_btns">
+                                    <input id="more_btn" type="button" value="修改">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <hr>
+
+
+        </div>
+
+    </div>
+
+    <!-- 表格css -->
+    <style>
+        td {
+            text-align: center;
+            font-weight: 700;
+        }
+
+        th {
+            background: gold;
+            text-align: center;
+            font-weight: 700;
+            font-size: 20px;
+            height: 40px;
+        }
+
+        tr {
+            background: #fff;
+        }
+
+        tr:hover {
+            background: rgb(182, 182, 177);
+        }
+    </style>
+
+    <style>
+        .btns input {
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            font-weight: 700;
+            background-color: gold;
+            border: 2 solid black;
+            border-radius: 5px;
+        }
+
+        .small_btns input {
+            width: 70px;
+            height: 25px;
+            font-size: 10px;
+            font-weight: 700;
+            background-color: gainsboro;
+            border: 2 solid black;
+            border-radius: 3px;
+        }
+    </style>
+
+
+
+
+    <script>
+        $("#edit_btn").click(function () {
+            xadmin.open('修改数据库', '/edit', 500, 500)
+        })
+    </script>
+    <!-- js查询图与表格的函数 -->
+    <script type="text/javascript">
+        function onSearch(obj) {//js函数开始
+            setTimeout(function () {//因为是即时查询，需要用setTimeout进行延迟，让值写入到input内，再读取
+                var storeId = document.getElementById('store');//获取table的id标识
+                var rowsLength = storeId.rows.length;//表格总共有多少行
+                var key = obj.value;//获取输入框的值
+                var searchCol0 = 0;//要搜索的哪一列，这里是第一列，从0开始数起
+                var searchCol1 = 1;
+                var searchCol2 = 2;
+                var searchCol3 = 3;
+                var searchCol4 = 4;
+                var searchCol5 = 5;
+                var searchCol6 = 6;
+                var searchCol7 = 7;
+                var searchCol8 = 8;
+                for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）
+                    var searchText0 = storeId.rows[i].cells[searchCol0].innerHTML;//取得table行，列的值
+                    var searchText1 = storeId.rows[i].cells[searchCol1].innerHTML;//取得table行，列的值
+                    var searchText2 = storeId.rows[i].cells[searchCol2].innerHTML;//取得table行，列的值
+                    var searchText3 = storeId.rows[i].cells[searchCol3].innerHTML;//取得table行，列的值
+                    var searchText4 = storeId.rows[i].cells[searchCol4].innerHTML;//取得table行，列的值
+                    var searchText5 = storeId.rows[i].cells[searchCol5].innerHTML;//取得table行，列的值
+                    var searchText6 = storeId.rows[i].cells[searchCol6].innerHTML;//取得table行，列的值
+                    var searchText7 = storeId.rows[i].cells[searchCol7].innerHTML;//取得table行，列的值
+                    var searchText8 = storeId.rows[i].cells[searchCol8].innerHTML;//取得table行，列的值
+                    if (searchText0.match(key) || searchText1.match(key) || searchText2.match(key) || searchText3.match(key) || searchText4.match(key) || searchText5.match(key) || searchText6.match(key) || searchText7.match(key) || searchText8.match(key)) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，
+                        storeId.rows[i].style.display = '';//显示行操作，
+                    } else {
+                        storeId.rows[i].style.display = 'none';//隐藏行操作
+                    }
+                }
+
+
+            }, 100);//200为延时时间
+        }
+    </script>
+
+    <!-- js表格排序 -->
+    <script>
+        function sortTable1() {
+            var table, rows, sw, i, x, y, jh;
+            table = document.getElementById("store");
+            sw = true;
+            //循环是否完成
+            while (sw) {
+                //完成了就不循环了
+                sw = false;
+                //获取行
+                rows = table.getElementsByTagName("TR");
+                //循环获得每个单元格的内容
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //默认不交换
+                    jh = false;
+
+                    x = rows[i].getElementsByTagName("TD")[0].innerHTML.toLowerCase();
+                    y = rows[i + 1].getElementsByTagName("TD")[0].innerHTML.toLowerCase();
+                    //比较两个单元格的内容
+                    if (x > y) {
+                        //如果正确肯定要交换位子
+                        jh = true;
+                        break;
+                    }
+                }
+                if (jh) {
+                    //互换一下位子
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    sw = true;
+                }
+            }
+        }
+        function sortTable2() {
+            var table, rows, sw, i, x, y, jh;
+            table = document.getElementById("store");
+            sw = true;
+            //循环是否完成
+            while (sw) {
+                //完成了就不循环了
+                sw = false;
+                //获取行
+                rows = table.getElementsByTagName("TR");
+                //循环获得每个单元格的内容
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //默认不交换
+                    jh = false;
+
+                    x = rows[i].getElementsByTagName("TD")[3].innerHTML.toLowerCase();
+                    y = rows[i + 1].getElementsByTagName("TD")[3].innerHTML.toLowerCase();
+                    //比较两个单元格的内容
+                    if (x > y) {
+                        //如果正确肯定要交换位子
+                        jh = true;
+                        break;
+                    }
+                }
+                if (jh) {
+                    //互换一下位子
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    sw = true;
+                }
+            }
+        }
+        function sortTable3() {
+            var table, rows, sw, i, x, y, jh;
+            table = document.getElementById("store");
+            sw = true;
+            //循环是否完成
+            while (sw) {
+                //完成了就不循环了
+                sw = false;
+                //获取行
+                rows = table.getElementsByTagName("TR");
+                //循环获得每个单元格的内容
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //默认不交换
+                    jh = false;
+
+                    x = rows[i].getElementsByTagName("TD")[7].innerHTML.toLowerCase();
+                    y = rows[i + 1].getElementsByTagName("TD")[7].innerHTML.toLowerCase();
+                    //比较两个单元格的内容
+                    if (x > y) {
+                        //如果正确肯定要交换位子
+                        jh = true;
+                        break;
+                    }
+                }
+                if (jh) {
+                    //互换一下位子
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    sw = true;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
