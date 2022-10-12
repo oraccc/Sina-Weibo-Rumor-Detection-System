@@ -59,8 +59,8 @@ In view of this background and demand, our project innovatively proposes an inte
 
 * **Detection Result Detail Panel**
 
-  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom: 67%;" />
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom: 50%;" />
 
 * **Built-in Fake News Database**
 
-  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom: 67%;" />
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom: 50%;" />
