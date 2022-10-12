@@ -28,3 +28,17 @@ In view of this background and demand, our project innovatively proposes an inte
 | Image Tampering Detection Module（图片篡改检测模块）         | RGB-N, ResNet            |
 | Comment Semantic Analysis Module（评论语义分析模块）         | TextCNN                  |
 
+#### 2. Usage
+
+* **Environment**
+  * Django >= 3.0
+  * wagtail >= 2.9
+* **Run System**
+  * `python manage.py makemigrations`
+  * `python manage.py migrate`
+  * `python manage.py runserver`
+  * open browser and visit `127.0.0.1:8000/login`
+    * username: admin
+    * password: 123456
+
+#### 3.System Screenshot
