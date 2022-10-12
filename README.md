@@ -6,7 +6,7 @@
 
 
 
-#### 1. Project Introduction
+### 1. Project Introduction
 
 In the age of Internet, fake news (or rumors) spreads widely and has a wide range of audiences, which causes wrong public opinion orientation easily, and ultimately harm the credibility of news public opinion. At present, the detection of fake news on Weibo mainly relies on *"users' independent reporting"*, and there is no automatic detection system for fake news on Weibo, which not only causes serious misreporting, but also has low efficiency and accuracy. 
 
@@ -28,7 +28,7 @@ In view of this background and demand, our project innovatively proposes an inte
 | Image Tampering Detection Module（图片篡改检测模块）         | RGB-N, ResNet            |
 | Comment Semantic Analysis Module（评论语义分析模块）         | TextCNN                  |
 
-#### 2. Usage
+### 2. Usage
 
 * **Environment**
   * Django >= 3.0
@@ -41,4 +41,10 @@ In view of this background and demand, our project innovatively proposes an inte
     * username: admin
     * password: 123456
 
-#### 3.System Screenshot
+### 3.System Screenshot
+
+![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system1.png)
+![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system2.png)
+![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system3.png)
+![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png)
+![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png)
