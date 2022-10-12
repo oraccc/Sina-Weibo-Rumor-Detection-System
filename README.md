@@ -41,7 +41,7 @@ In view of this background and demand, our project innovatively proposes an inte
     * username: admin
     * password: 123456
 
-### 3.System Screenshot
+### 3. System Screenshot
 
 ![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system1.png)
 ![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system2.png)
