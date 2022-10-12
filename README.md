@@ -16,7 +16,7 @@ In view of this background and demand, our project innovatively proposes an inte
 
 - **System Structure**
 
-![flow chart](D:\信安竞赛\system\images\flow chart.png)
+![flow chart](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/flow%20chart.png)
 
 - **Modules and Algorithms**
 
