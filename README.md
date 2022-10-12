@@ -41,14 +41,24 @@ In view of this background and demand, our project innovatively proposes an inte
     * username: admin
     * password: 123456
 
-### 3. System Screenshot
+### 3. System Screenshot Samples
 
-<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system1.png" style="zoom:80%;" />
+* **Main Panel**
 
-<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system2.png" style="zoom:80%;" />
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system1.png" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system3.png" style="zoom:80%;" />
+* **Keywords Association Graph**
 
-<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom:80%;" />
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system2.png" style="zoom: 50%;" />
 
-<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom:80%;" />
+* **Single Post Detection Page**
+
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system3.png" style="zoom: 50%;" />
+
+* **Detection Result Detail Panel**
+
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom: 67%;" />
+
+* **Built-in Fake News Database**
+
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom: 67%;" />
