@@ -22,11 +22,11 @@ In view of this background and demand, our project innovatively proposes an inte
 
   | Modules                                                      | Algorithms Used                                              |
   | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | **1**: Irrelevant Microblog Filtering Module <br />（无关微博过滤模块） | [BERT-DPCNN](https://link.springer.com/chapter/10.1007/978-981-15-8599-9_60) |
-  | **2**: Known Fake News Discrimination Module<br />（已知虚假新闻检测模块） | [CARMN](https://www.sciencedirect.com/science/article/abs/pii/S0306457320309304) |
-  | **3**: Image Tampering Detection Module<br />（图片篡改检测模块） | [RGB-N](https://openaccess.thecvf.com/content_cvpr_2018/papers/Zhou_Learning_Rich_Features_CVPR_2018_paper.pdf), [ResNet](https://arxiv.org/abs/1512.03385) |
-  | **4**: Fake News Detection Module of Tracing Stolen Image<br />（基于溯源的盗图新闻检测模块） | [SimNet](https://www.paddlepaddle.org.cn/modelbasedetail/SimNet) (by PaddlePaddle) |
-  | **5**: Comment Semantic Analysis Module<br />（评论语义分析模块） | [TextCNN](https://arxiv.org/abs/1408.5882)                   |
+  | **1**: Irrelevant Microblog Filtering Module（无关微博过滤模块） | [BERT-DPCNN](https://link.springer.com/chapter/10.1007/978-981-15-8599-9_60) |
+  | **2**: Known Fake News Discrimination Module （已知虚假新闻检测模块） | [CARMN](https://www.sciencedirect.com/science/article/abs/pii/S0306457320309304) |
+  | **3**: Image Tampering Detection Module （图片篡改检测模块） | [RGB-N](https://openaccess.thecvf.com/content_cvpr_2018/papers/Zhou_Learning_Rich_Features_CVPR_2018_paper.pdf), [ResNet](https://arxiv.org/abs/1512.03385) |
+  | **4**: Fake News Detection Module of Tracing Stolen Image （基于溯源的盗图新闻检测模块） | [SimNet](https://www.paddlepaddle.org.cn/modelbasedetail/SimNet) (by PaddlePaddle) |
+  | **5**: Comment Semantic Analysis Module （评论语义分析模块） | [TextCNN](https://arxiv.org/abs/1408.5882)                   |
 
 
 
@@ -59,8 +59,8 @@ In view of this background and demand, our project innovatively proposes an inte
 
 * **Detection Result Detail Panel**
 
-  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom: 50%;" />
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom: 67%;" />
 
 * **Built-in Fake News Database**
 
-  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom: 50%;" />
+  <img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom: 67%;" />
