@@ -43,8 +43,12 @@ In view of this background and demand, our project innovatively proposes an inte
 
 ### 3. System Screenshot
 
-![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system1.png)
-![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system2.png)
-![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system3.png)
-![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png)
-![](https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png)
+<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system1.png" style="zoom:80%;" />
+
+<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system2.png" style="zoom:80%;" />
+
+<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system3.png" style="zoom:80%;" />
+
+<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system4.png" style="zoom:80%;" />
+
+<img src="https://raw.githubusercontent.com/oraccc/Sina-Weibo-Rumor-Detection-System/master/images/system5.png" style="zoom:80%;" />
